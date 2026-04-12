@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Test your cybersecurity knowledge with CyberAware's interactive 10-question quiz. Get instant feedback and explanations." />
+  <title>Quiz | CyberAware</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/base.css" />
+  <link rel="stylesheet" href="../css/layout.css" />
+  <link rel="stylesheet" href="../css/components.css" />
+  <link rel="stylesheet" href="../css/pages.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="site-header" role="banner">
+    <nav class="navbar" aria-label="Primary navigation">
+      <a class="nav-logo" href="../index.html" aria-label="CyberAware Home">
+        <span class="logo-icon" aria-hidden="true">🛡️</span>
+        <span class="logo-text">Cyber<span class="accent">Aware</span></span>
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation menu">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+      <ul class="nav-menu" id="navMenu" role="list">
+        <li><a class="nav-link" href="../index.html">Home</a></li>
+        <li><a class="nav-link" href="learn.html">Learn</a></li>
+        <li><a class="nav-link active" href="quiz.html" aria-current="page">Quiz</a></li>
+        <li><a class="nav-link" href="resources.html">Resources</a></li>
+        <li><a class="nav-link" href="contact.html">Contact</a></li>
+        <li><a class="nav-link btn-nav" href="login.html">Login</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <!-- Page Hero -->
+    <section class="page-hero" aria-labelledby="quiz-hero-heading">
+      <div class="container">
+        <span class="section-badge">Test Yourself</span>
+        <h1 id="quiz-hero-heading">Cybersecurity Quiz</h1>
+        <p>10 questions covering HTTPS, phishing, passwords, vulnerabilities and more. Score saved locally.</p>
+      </div>
+    </section>
+
+    <!-- Quiz Body -->
+    <section class="section quiz-section" aria-labelledby="quiz-section-heading">
+      <div class="container">
+        <h2 id="quiz-section-heading" class="sr-only">Interactive Quiz</h2>
+
+        <!-- Start Screen -->
+        <div id="quizStart" class="quiz-result-card" style="max-width:620px; margin-inline:auto;">
+          <div style="font-size:4rem; margin-bottom: var(--space-6);" aria-hidden="true">🧠</div>
+          <h2 style="margin-bottom:var(--space-4);">Ready to Test Your Knowledge?</h2>
+          <p style="margin-bottom:var(--space-8);">10 multiple-choice questions on cybersecurity fundamentals. You'll get instant explanations after each answer. Your best score is saved locally.</p>
+
+          <div id="bestScoreDisplay" style="margin-bottom: var(--space-6); display:none;">
+            <div class="alert alert--info">
+              <span class="alert-icon">🏆</span>
+              <span>Your best score: <strong id="bestScoreVal">-</strong></span>
+            </div>
+          </div>
+
+          <button class="btn btn-primary btn-large" id="startQuizBtn" type="button">
+            Start Quiz →
+          </button>
+        </div>
+
+        <!-- Quiz In-Progress -->
+        <div id="quizGame" class="quiz-container" style="display:none;" role="region" aria-label="Quiz game">
+          <div class="quiz-meta" aria-live="polite">
+            <span id="questionCounter" aria-label="Question progress">Question 1 of 10</span>
+            <span class="quiz-score-badge" id="scoreDisplay" aria-live="polite">Score: 0</span>
+          </div>
+
+          <div class="quiz-progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="10" aria-label="Quiz progress">
+            <div class="quiz-progress-fill" id="progressFill" style="width:0%"></div>
+          </div>
+
+          <div class="quiz-card">
+            <p class="quiz-question" id="quizQuestion" aria-live="polite"></p>
+            <div class="quiz-options" id="quizOptions" role="group" aria-label="Answer options">
+              <!-- Options injected by JS -->
+            </div>
+            <div class="quiz-explanation" id="quizExplanation" aria-live="polite" role="note"></div>
+            <div class="quiz-actions">
+              <button class="btn btn-primary" id="nextQuestionBtn" type="button" style="display:none;">
+                Next Question →
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Results Screen -->
+        <div id="quizResults" style="display:none;" class="quiz-container">
+          <div class="quiz-result-card">
+            <div class="result-score-ring" id="scoreRing">
+              <div class="result-score-inner" id="finalScoreDisplay" aria-label="Final score">0/10</div>
+            </div>
+            <h2 id="resultTitle" style="margin-bottom:var(--space-3);">Well Done!</h2>
+            <p id="resultMessage" style="max-width:440px; margin-inline:auto; margin-bottom:var(--space-8);"></p>
+
+            <!-- Review table -->
+            <div id="reviewTable" style="text-align:left; margin-bottom: var(--space-8); overflow-x:auto;">
+              <table class="data-table" aria-label="Quiz review table">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Question</th>
+                    <th scope="col">Your Answer</th>
+                    <th scope="col">Result</th>
+                  </tr>
+                </thead>
+                <tbody id="reviewTableBody"></tbody>
+              </table>
+            </div>
+
+            <div style="display:flex; gap:var(--space-4); flex-wrap:wrap; justify-content:center;">
+              <button class="btn btn-primary" id="retakeBtn" type="button">Retake Quiz</button>
+              <a class="btn btn-ghost" href="learn.html">Back to Lessons</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a class="nav-logo" href="../index.html"><span aria-hidden="true">🛡️</span><span>Cyber<span class="accent">Aware</span></span></a>
+        <p>A cybersecurity education project.</p>
+      </div>
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <h3>Pages</h3>
+        <ul role="list">
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="learn.html">Learn</a></li>
+          <li><a href="quiz.html">Quiz</a></li>
+          <li><a href="resources.html">Resources</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="footer-info">
+        <h3>Standards</h3>
+        <ul role="list">
+          <li>🔒 HTTPS Ready</li>
+          <li>♿ WCAG AA</li>
+          <li>✅ W3C Valid</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom"><p>© 2026 CyberAware Project.</p></div>
+  </footer>
+
+  <script src="../js/nav.js" defer></script>
+  <script src="../js/quiz.js" defer></script>
+</body>
+</html>

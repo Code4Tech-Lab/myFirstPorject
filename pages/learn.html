@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Learn cybersecurity fundamentals — HTTPS, DNS, phishing, XSS, CSRF, SQL injection, and more." />
+  <title>Learn | CyberAware</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/base.css" />
+  <link rel="stylesheet" href="../css/layout.css" />
+  <link rel="stylesheet" href="../css/components.css" />
+  <link rel="stylesheet" href="../css/pages.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="site-header" role="banner">
+    <nav class="navbar" aria-label="Primary navigation">
+      <a class="nav-logo" href="../index.html" aria-label="CyberAware Home">
+        <span class="logo-icon" aria-hidden="true">🛡️</span>
+        <span class="logo-text">Cyber<span class="accent">Aware</span></span>
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation menu">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+      <ul class="nav-menu" id="navMenu" role="list">
+        <li><a class="nav-link" href="../index.html">Home</a></li>
+        <li><a class="nav-link active" href="learn.html" aria-current="page">Learn</a></li>
+        <li><a class="nav-link" href="quiz.html">Quiz</a></li>
+        <li><a class="nav-link" href="resources.html">Resources</a></li>
+        <li><a class="nav-link" href="contact.html">Contact</a></li>
+        <li><a class="nav-link btn-nav" href="login.html">Login</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <!-- Page Hero -->
+    <section class="page-hero" aria-labelledby="learn-hero-heading">
+      <div class="container">
+        <span class="section-badge">Education</span>
+        <h1 id="learn-hero-heading">Cybersecurity Lessons</h1>
+        <p>From HTTPS to phishing attacks — learn how the web works and how to stay secure.</p>
+      </div>
+    </section>
+
+    <!-- Lessons Overview Grid -->
+    <section class="section" style="background: var(--clr-bg-900);" aria-labelledby="lessons-grid-heading">
+      <div class="container">
+        <div class="section-header" style="text-align:left; margin-bottom: var(--space-8);">
+          <h2 id="lessons-grid-heading">All Lessons</h2>
+          <p>Click any lesson to dive in. Sorted by topic area.</p>
+        </div>
+        <div class="lesson-grid" id="lessonGrid">
+          <!-- Lesson cards are rendered by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Detailed Lesson View -->
+    <section class="section" id="lesson-view" aria-labelledby="lesson-view-heading">
+      <div class="container">
+        <div class="learn-layout">
+          <!-- Sidebar -->
+          <aside class="learn-sidebar" aria-label="Lesson navigation">
+            <p class="sidebar-title">Lessons</p>
+            <nav class="sidebar-nav" id="sidebarNav" aria-label="Lesson list">
+              <!-- populated by JS -->
+            </nav>
+          </aside>
+
+          <!-- Content -->
+          <article class="lesson-content" id="lessonContent" aria-live="polite">
+            <!-- populated by JS -->
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Security Lab -->
+    <section class="section" id="security-lab" style="background: var(--clr-bg-900);" aria-labelledby="lab-heading">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">Lab</span>
+          <h2 id="lab-heading">Security Lab — See It, Fix It</h2>
+          <p class="section-subtitle">Simulated vulnerability demonstrations. These are controlled examples for learning — never replicate on real systems without permission.</p>
+        </div>
+
+        <!-- Vulnerability 1: Weak Input Validation (XSS) -->
+        <div class="lab-demo" role="region" aria-labelledby="lab1-heading">
+          <div class="lab-header">
+            <span class="lab-tag">⚠️ Vulnerable</span>
+            <h3 id="lab1-heading">Vulnerability #1 — Unsanitized Input (XSS)</h3>
+          </div>
+          <p style="font-size:var(--text-sm); margin-bottom: var(--space-4);">
+            <strong>Attack:</strong> The application takes user input and renders it directly into the DOM without escaping. An attacker types <code>&lt;script&gt;alert('XSS')&lt;/script&gt;</code> into a name field.
+          </p>
+
+          <!-- Vulnerable demo -->
+          <div style="border: 1px solid rgba(248,113,113,0.3); border-radius: var(--radius-md); padding: var(--space-5); margin-bottom: var(--space-4);">
+            <label class="form-label" for="vulnInput">Your name (vulnerable demo):</label>
+            <div style="display:flex; gap: var(--space-3); flex-wrap:wrap;">
+              <input class="form-input" id="vulnInput" type="text" placeholder="Try: <b>hello</b>" style="flex:1;" aria-describedby="vulnDesc" />
+              <button class="btn btn-outline btn-sm" id="vulnSubmit" type="button">Render (Unsafe)</button>
+            </div>
+            <p id="vulnDesc" class="form-hint">This deliberately renders HTML unsafely to demonstrate XSS.</p>
+            <div id="vulnOutput" style="margin-top: var(--space-4); padding: var(--space-3); background: var(--clr-bg-900); border-radius: var(--radius-sm); font-size: var(--text-sm); min-height: 40px; color: var(--clr-text-200);" aria-label="Vulnerable output area" aria-live="polite">Output will appear here…</div>
+          </div>
+
+          <!-- Fixed demo -->
+          <div class="lab-header" style="margin-top: var(--space-6);">
+            <span class="lab-fix-tag">✅ Fixed</span>
+            <h4>Same input — properly sanitized</h4>
+          </div>
+          <div style="border: 1px solid rgba(74,222,128,0.3); border-radius: var(--radius-md); padding: var(--space-5);">
+            <div style="display:flex; gap: var(--space-3); flex-wrap:wrap;">
+              <input class="form-input" id="safeInput" type="text" placeholder="Try: <b>hello</b>" style="flex:1;" aria-label="Safe input field" />
+              <button class="btn btn-outline btn-sm" id="safeSubmit" type="button">Render (Safe)</button>
+            </div>
+            <div id="safeOutput" style="margin-top: var(--space-4); padding: var(--space-3); background: var(--clr-bg-900); border-radius: var(--radius-sm); font-size: var(--text-sm); min-height: 40px; color: var(--clr-text-200);" aria-label="Safe output area" aria-live="polite">Output will appear here…</div>
+            <pre class="code-block" style="margin-top: var(--space-4);" aria-label="Sanitization code"><code><span class="code-comment">// ✅ Escape HTML entities — prevents XSS</span>
+function escapeHTML(str) {
+  return str
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+}
+output.textContent = escapeHTML(userInput); <span class="code-comment">// textContent, not innerHTML</span></code></pre>
+          </div>
+        </div>
+
+        <!-- Vulnerability 2: CSRF Explanation -->
+        <div class="lab-demo" style="border-color: rgba(251,191,36,0.2);" role="region" aria-labelledby="lab2-heading">
+          <div class="lab-header">
+            <span class="lab-tag" style="background:rgba(251,191,36,0.15); color:var(--clr-yellow-400); border-color:rgba(251,191,36,0.3);">⚠️ Concept</span>
+            <h3 id="lab2-heading">Vulnerability #2 — CSRF Attack</h3>
+          </div>
+          <p style="font-size:var(--text-sm); margin-bottom: var(--space-4);">
+            <strong>Cross-Site Request Forgery (CSRF)</strong> tricks a logged-in user into submitting a request they didn't intend.
+          </p>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap: var(--space-6);">
+            <div>
+              <h4 style="color:var(--clr-red-400); margin-bottom: var(--space-3);">⚠️ Attack Flow</h4>
+              <pre class="code-block" aria-label="CSRF attack example"><code><span class="code-comment">// Malicious site sends this hidden form</span>
+&lt;form action="https://bank.com/transfer"
+      method="POST"&gt;
+  &lt;input type="hidden" name="to" value="attacker"/&gt;
+  &lt;input type="hidden" name="amount" value="5000"/&gt;
+&lt;/form&gt;
+&lt;script&gt;document.forms[0].submit()&lt;/script&gt;</code></pre>
+            </div>
+            <div>
+              <h4 style="color:var(--clr-green-400); margin-bottom: var(--space-3);">✅ Prevention</h4>
+              <pre class="code-block" aria-label="CSRF prevention token example"><code><span class="code-comment">// Server generates a random CSRF token</span>
+&lt;input type="hidden"
+  name="csrf_token"
+  value="a3f7x9z2...random..."/&gt;
+<span class="code-comment">// Server validates token matches session</span>
+<span class="code-comment">// Token is unique per session — cannot forge</span></code></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a class="nav-logo" href="../index.html"><span aria-hidden="true">🛡️</span><span>Cyber<span class="accent">Aware</span></span></a>
+        <p>A cybersecurity education project.</p>
+      </div>
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <h3>Pages</h3>
+        <ul role="list">
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="learn.html">Learn</a></li>
+          <li><a href="quiz.html">Quiz</a></li>
+          <li><a href="resources.html">Resources</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="footer-info">
+        <h3>Standards</h3>
+        <ul role="list">
+          <li>🔒 HTTPS Ready</li>
+          <li>♿ WCAG AA</li>
+          <li>✅ W3C Valid</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom"><p>© 2026 CyberAware Project.</p></div>
+  </footer>
+
+  <script src="../js/nav.js" defer></script>
+  <script src="../js/learn.js" defer></script>
+</body>
+</html>

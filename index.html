@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- ===== META & SEO ===== -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="CyberAware – Your cybersecurity education hub. Learn, quiz, and stay secure online." />
+  <meta name="author" content="CyberAware Team" />
+  <title>CyberAware | Cybersecurity Education Hub</title>
+
+  <!-- ===== FAVICON (SVG inline data URI) ===== -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>" />
+
+  <!-- ===== FONTS ===== -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+
+  <!-- ===== STYLESHEETS ===== -->
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/home.css" />
+</head>
+<body>
+
+  <!-- ===== SKIP LINK (Accessibility) ===== -->
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <!-- ===== HEADER / NAV ===== -->
+  <header class="site-header" role="banner">
+    <nav class="navbar" aria-label="Primary navigation">
+      <a class="nav-logo" href="index.html" aria-label="CyberAware Home">
+        <span class="logo-icon" aria-hidden="true">🛡️</span>
+        <span class="logo-text">Cyber<span class="accent">Aware</span></span>
+      </a>
+
+      <!-- Hamburger for mobile -->
+      <button class="nav-toggle" id="navToggle" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation menu">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+
+      <ul class="nav-menu" id="navMenu" role="list">
+        <li><a class="nav-link active" href="index.html" aria-current="page">Home</a></li>
+        <li><a class="nav-link" href="pages/learn.html">Learn</a></li>
+        <li><a class="nav-link" href="pages/quiz.html">Quiz</a></li>
+        <li><a class="nav-link" href="pages/resources.html">Resources</a></li>
+        <li><a class="nav-link" href="pages/contact.html">Contact</a></li>
+        <li><a class="nav-link btn-nav" href="pages/login.html">Login</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <main id="main-content">
+
+    <!-- HERO SECTION -->
+    <section class="hero" aria-labelledby="hero-heading">
+      <div class="hero-bg-grid" aria-hidden="true"></div>
+      <div class="hero-particles" id="heroParticles" aria-hidden="true"></div>
+
+      <div class="container hero-content">
+        <div class="hero-badge">
+          <span class="badge-dot" aria-hidden="true"></span>
+          Cybersecurity Education Platform
+        </div>
+        <h1 id="hero-heading" class="hero-title">
+          Stay <span class="gradient-text">Cyber Safe</span><br />
+          in the Digital Age
+        </h1>
+        <p class="hero-subtitle">
+          Learn about web security, phishing, HTTPS, vulnerabilities and more.
+          Built for students who want to understand how the internet really works — and how to protect it.
+        </p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="pages/learn.html">Start Learning</a>
+          <a class="btn btn-outline" href="pages/quiz.html">Take the Quiz</a>
+        </div>
+
+        <!-- Live stats bar -->
+        <div class="hero-stats" aria-label="Platform statistics">
+          <div class="stat-item">
+            <span class="stat-number" id="statLessons">10+</span>
+            <span class="stat-label">Lessons</span>
+          </div>
+          <div class="stat-divider" aria-hidden="true"></div>
+          <div class="stat-item">
+            <span class="stat-number">10</span>
+            <span class="stat-label">Quiz Questions</span>
+          </div>
+          <div class="stat-divider" aria-hidden="true"></div>
+          <div class="stat-item">
+            <span class="stat-number">WCAG</span>
+            <span class="stat-label">AA Compliant</span>
+          </div>
+          <div class="stat-divider" aria-hidden="true"></div>
+          <div class="stat-item">
+            <span class="stat-number">Free</span>
+            <span class="stat-label">Open Resource</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual" aria-hidden="true">
+        <div class="shield-animation">
+          <div class="shield-outer"></div>
+          <div class="shield-inner"></div>
+          <div class="shield-icon">🔐</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW THE WEB WORKS SECTION -->
+    <section class="section web-architecture" aria-labelledby="arch-heading">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">Architecture</span>
+          <h2 id="arch-heading">How the Web Works</h2>
+          <p class="section-subtitle">
+            Understanding the client–server model, DNS, and HTTP/HTTPS is the foundation of web security.
+          </p>
+        </div>
+
+        <div class="arch-flow" role="list" aria-label="Web request flow steps">
+          <div class="arch-step" role="listitem">
+            <div class="arch-step-icon" aria-hidden="true">💻</div>
+            <h3>1. Browser Sends Request</h3>
+            <p>Your browser (client) sends an <strong>HTTP/HTTPS request</strong> with headers, method (GET/POST), and data to a domain name.</p>
+          </div>
+
+          <div class="arch-arrow" aria-hidden="true">→</div>
+
+          <div class="arch-step" role="listitem">
+            <div class="arch-step-icon" aria-hidden="true">🌐</div>
+            <h3>2. DNS Resolution</h3>
+            <p>The <strong>Domain Name System</strong> translates <code>example.com</code> into an IP address like <code>93.184.216.34</code> so packets can be routed.</p>
+          </div>
+
+          <div class="arch-arrow" aria-hidden="true">→</div>
+
+          <div class="arch-step" role="listitem">
+            <div class="arch-step-icon" aria-hidden="true">🖥️</div>
+            <h3>3. Server Responds</h3>
+            <p>The web server processes the request, fetches resources, and responds with <strong>HTML, CSS, JS files</strong> plus an HTTP status code (200, 404, etc.).</p>
+          </div>
+
+          <div class="arch-arrow" aria-hidden="true">→</div>
+
+          <div class="arch-step" role="listitem">
+            <div class="arch-step-icon" aria-hidden="true">🔒</div>
+            <h3>4. HTTPS Encryption</h3>
+            <p><strong>TLS/SSL</strong> encrypts the entire communication. The 🔒 padlock means data is encrypted in transit — nobody can sniff your passwords.</p>
+          </div>
+        </div>
+
+        <div class="sftp-callout">
+          <div class="callout-icon" aria-hidden="true">📁</div>
+          <div class="callout-body">
+            <h3>Deploying with SFTP & FileZilla</h3>
+            <p>
+              <strong>SFTP (SSH File Transfer Protocol)</strong> encrypts file uploads unlike plain FTP.
+              Use <a href="https://filezilla-project.org" target="_blank" rel="noopener noreferrer">FileZilla</a> to connect: enter your server's IP, port <code>22</code>, username, and SSH key.
+              Great for deploying to a VPS/VM running Apache or Nginx.
+              <a href="pages/resources.html#sftp-guide">Full SFTP Guide →</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURE CARDS -->
+    <section class="section features" aria-labelledby="features-heading">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">What You'll Learn</span>
+          <h2 id="features-heading">Explore CyberAware</h2>
+        </div>
+
+        <div class="cards-grid">
+          <article class="card card--learn" aria-label="Learn section">
+            <div class="card-icon" aria-hidden="true">📚</div>
+            <h3 class="card-title">Learn</h3>
+            <p class="card-desc">Dive into topics: HTTPS, DNS, phishing, CSRF, XSS, SQL injection and more — explained for beginners.</p>
+            <a class="card-link" href="pages/learn.html">Explore Lessons <span aria-hidden="true">→</span></a>
+          </article>
+
+          <article class="card card--quiz" aria-label="Quiz section">
+            <div class="card-icon" aria-hidden="true">🧠</div>
+            <h3 class="card-title">Quiz</h3>
+            <p class="card-desc">Test your knowledge with 10 interactive questions. Instant feedback, score tracking, and explanations.</p>
+            <a class="card-link" href="pages/quiz.html">Take Quiz <span aria-hidden="true">→</span></a>
+          </article>
+
+          <article class="card card--resources" aria-label="Resources section">
+            <div class="card-icon" aria-hidden="true">🔗</div>
+            <h3 class="card-title">Resources</h3>
+            <p class="card-desc">Curated links: OWASP, NIST, deployment guides, W3C tools, and accessibility checklists.</p>
+            <a class="card-link" href="pages/resources.html">View Resources <span aria-hidden="true">→</span></a>
+          </article>
+
+          <article class="card card--security" aria-label="Security section">
+            <div class="card-icon" aria-hidden="true">🛡️</div>
+            <h3 class="card-title">Security Lab</h3>
+            <p class="card-desc">See real vulnerability examples — weak validation, phishing simulations — then learn how to fix them.</p>
+            <a class="card-link" href="pages/learn.html#security-lab">Security Lab <span aria-hidden="true">→</span></a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECURITY HIGHLIGHT -->
+    <section class="section security-highlight" aria-labelledby="sec-heading">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">Security</span>
+          <h2 id="sec-heading">Security Concepts Visualized</h2>
+        </div>
+        <div class="security-grid">
+          <div class="security-card">
+            <span class="sec-badge sec-badge--danger">⚠️ Vulnerable</span>
+            <h3>Weak Input Validation</h3>
+            <pre class="code-block" aria-label="Vulnerable code example"><code><span class="code-comment">// ❌ No validation — accepts anything</span>
+let email = document.getElementById('email').value;
+fetch('/login', { body: JSON.stringify({email}) });</code></pre>
+            <p>An attacker can submit <code>&lt;script&gt;alert(1)&lt;/script&gt;</code> as the email — this is <strong>XSS</strong>.</p>
+          </div>
+
+          <div class="security-card">
+            <span class="sec-badge sec-badge--safe">✅ Secure</span>
+            <h3>Proper Sanitization</h3>
+            <pre class="code-block" aria-label="Secure code example"><code><span class="code-comment">// ✅ Validate with regex before sending</span>
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+if (!emailRegex.test(email)) {
+  showError('Invalid email format');
+  return; <span class="code-comment">// Reject invalid input</span>
+}</code></pre>
+            <p>Always validate on both client <em>and</em> server. Never trust user input.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA SECTION -->
+    <section class="section cta-section" aria-labelledby="cta-heading">
+      <div class="container cta-inner">
+        <h2 id="cta-heading">Ready to Become Cyber Aware?</h2>
+        <p>Join the platform, explore the lessons, and prove your skills with our interactive quiz.</p>
+        <div class="cta-buttons">
+          <a class="btn btn-primary btn-large" href="pages/login.html">Create Free Account</a>
+          <a class="btn btn-ghost btn-large" href="pages/contact.html">Contact Us</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a class="nav-logo" href="index.html" aria-label="CyberAware Home">
+          <span aria-hidden="true">🛡️</span>
+          <span>Cyber<span class="accent">Aware</span></span>
+        </a>
+        <p>A cybersecurity education project built with semantic HTML5, vanilla CSS, and JavaScript.</p>
+      </div>
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <h3>Pages</h3>
+        <ul role="list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="pages/learn.html">Learn</a></li>
+          <li><a href="pages/quiz.html">Quiz</a></li>
+          <li><a href="pages/resources.html">Resources</a></li>
+          <li><a href="pages/contact.html">Contact</a></li>
+          <li><a href="pages/login.html">Login / Signup</a></li>
+        </ul>
+      </nav>
+      <div class="footer-info">
+        <h3>Project Info</h3>
+        <ul role="list">
+          <li>🔒 HTTPS Ready</li>
+          <li>♿ WCAG AA Compliant</li>
+          <li>✅ W3C Valid HTML5</li>
+          <li>📱 Mobile-First Design</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 CyberAware Project. Built for cybersecurity students.</p>
+    </div>
+  </footer>
+
+  <!-- ===== SCRIPTS ===== -->
+  <script src="js/nav.js" defer></script>
+  <script src="js/home.js" defer></script>
+</body>
+</html>

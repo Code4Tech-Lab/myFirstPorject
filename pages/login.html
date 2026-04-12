@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Login or create a free CyberAware account to track your quiz progress and learning journey." />
+  <title>Login & Signup | CyberAware</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/base.css" />
+  <link rel="stylesheet" href="../css/layout.css" />
+  <link rel="stylesheet" href="../css/components.css" />
+  <link rel="stylesheet" href="../css/pages.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="site-header" role="banner">
+    <nav class="navbar" aria-label="Primary navigation">
+      <a class="nav-logo" href="../index.html" aria-label="CyberAware Home">
+        <span class="logo-icon" aria-hidden="true">🛡️</span>
+        <span class="logo-text">Cyber<span class="accent">Aware</span></span>
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation menu">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+      <ul class="nav-menu" id="navMenu" role="list">
+        <li><a class="nav-link" href="../index.html">Home</a></li>
+        <li><a class="nav-link" href="learn.html">Learn</a></li>
+        <li><a class="nav-link" href="quiz.html">Quiz</a></li>
+        <li><a class="nav-link" href="resources.html">Resources</a></li>
+        <li><a class="nav-link" href="contact.html">Contact</a></li>
+        <li><a class="nav-link btn-nav active" href="login.html" aria-current="page">Login</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main-content" class="auth-page">
+    <div class="container">
+      <div class="form-card">
+        <!-- Logo -->
+        <div style="text-align:center; margin-bottom: var(--space-6);">
+          <span style="font-size:3rem;" aria-hidden="true">🛡️</span>
+          <p style="font-size: var(--text-sm); color: var(--clr-text-300); margin-top: var(--space-2);">CyberAware — Cybersecurity Education</p>
+        </div>
+
+        <!-- Login / Signup Tabs -->
+        <div class="auth-tabs" role="tablist" aria-label="Authentication options">
+          <button class="auth-tab-btn active" id="loginTab" role="tab" aria-selected="true" aria-controls="loginPanel" type="button">Login</button>
+          <button class="auth-tab-btn" id="signupTab" role="tab" aria-selected="false" aria-controls="signupPanel" type="button">Sign Up</button>
+        </div>
+
+        <!-- ===== LOGIN PANEL ===== -->
+        <div id="loginPanel" class="auth-panel active" role="tabpanel" aria-labelledby="loginTab">
+          <h1 class="form-title" style="font-size: var(--text-2xl);">Welcome back</h1>
+          <p class="form-subtitle">Log in to track your quiz scores and progress.</p>
+
+          <div id="loginSuccess" class="alert alert--success" style="display:none;" role="alert" aria-live="assertive">
+            <span class="alert-icon">✅</span>
+            <span>Login successful! (Demo — no server authentication.)</span>
+          </div>
+          <div id="loginError" class="alert alert--error" style="display:none;" role="alert" aria-live="assertive">
+            <span class="alert-icon">❌</span>
+            <span id="loginErrorMsg">Invalid credentials.</span>
+          </div>
+
+          <form id="loginForm" novalidate aria-label="Login form">
+            <input type="hidden" name="csrf_token" id="loginCsrfToken" value="" aria-hidden="true" />
+
+            <div class="form-group">
+              <label class="form-label" for="loginEmail">
+                Email Address <span class="required" aria-hidden="true">*</span>
+              </label>
+              <input
+                class="form-input"
+                type="email"
+                id="loginEmail"
+                name="email"
+                autocomplete="email"
+                required
+                aria-required="true"
+                aria-describedby="loginEmail-error"
+                placeholder="you@example.com"
+              />
+              <span id="loginEmail-error" class="form-error" role="alert">⚠ Enter a valid email address.</span>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="loginPassword">
+                Password <span class="required" aria-hidden="true">*</span>
+              </label>
+              <div style="position:relative;">
+                <input
+                  class="form-input"
+                  type="password"
+                  id="loginPassword"
+                  name="password"
+                  autocomplete="current-password"
+                  required
+                  aria-required="true"
+                  aria-describedby="loginPassword-error"
+                  placeholder="••••••••"
+                  style="padding-right: 3rem;"
+                />
+                <button type="button" class="show-pw-btn" id="toggleLoginPw" aria-label="Show password" style="position:absolute; right: var(--space-3); top:50%; transform:translateY(-50%); background:none; border:none; cursor:pointer; color:var(--clr-text-300); font-size:var(--text-lg);">👁</button>
+              </div>
+              <span id="loginPassword-error" class="form-error" role="alert">⚠ Password is required.</span>
+            </div>
+
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: var(--space-6);">
+              <div class="checkbox-group">
+                <input type="checkbox" id="rememberMe" name="remember" />
+                <label for="rememberMe" class="form-label" style="margin-bottom:0; cursor:pointer; font-weight:400;">Remember me</label>
+              </div>
+              <a href="#" style="font-size:var(--text-sm);" aria-label="Forgot password - opens reset flow">Forgot password?</a>
+            </div>
+
+            <button class="btn-submit" type="submit" id="loginSubmit">Log In →</button>
+          </form>
+
+          <div class="divider-or" aria-hidden="true">or</div>
+
+          <div style="text-align:center; font-size: var(--text-sm); color: var(--clr-text-300);">
+            Don't have an account?
+            <button type="button" id="switchToSignup" style="color:var(--clr-primary-400); font-weight:600; background:none; border:none; cursor:pointer;">Sign up for free</button>
+          </div>
+        </div>
+
+        <!-- ===== SIGNUP PANEL ===== -->
+        <div id="signupPanel" class="auth-panel" role="tabpanel" aria-labelledby="signupTab">
+          <h2 class="form-title" style="font-size: var(--text-2xl);">Create an Account</h2>
+          <p class="form-subtitle">Join free and track your cybersecurity learning journey.</p>
+
+          <div id="signupSuccess" class="alert alert--success" style="display:none;" role="alert" aria-live="assertive">
+            <span class="alert-icon">✅</span>
+            <span>Account created! (Demo — no server. In production this would send a verification email.)</span>
+          </div>
+          <div id="signupError" class="alert alert--error" style="display:none;" role="alert" aria-live="assertive">
+            <span class="alert-icon">❌</span>
+            <span id="signupErrorMsg">Please fix the errors above.</span>
+          </div>
+
+          <form id="signupForm" novalidate aria-label="Sign up form">
+            <input type="hidden" name="csrf_token" id="signupCsrfToken" value="" aria-hidden="true" />
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="signupFirstName">
+                  First Name <span class="required" aria-hidden="true">*</span>
+                </label>
+                <input
+                  class="form-input"
+                  type="text"
+                  id="signupFirstName"
+                  name="firstName"
+                  autocomplete="given-name"
+                  required
+                  aria-required="true"
+                  aria-describedby="signupFirstName-error"
+                  placeholder="Jane"
+                />
+                <span id="signupFirstName-error" class="form-error" role="alert">⚠ First name is required.</span>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="signupLastName">
+                  Last Name <span class="required" aria-hidden="true">*</span>
+                </label>
+                <input
+                  class="form-input"
+                  type="text"
+                  id="signupLastName"
+                  name="lastName"
+                  autocomplete="family-name"
+                  required
+                  aria-required="true"
+                  aria-describedby="signupLastName-error"
+                  placeholder="Doe"
+                />
+                <span id="signupLastName-error" class="form-error" role="alert">⚠ Last name is required.</span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="signupEmail">
+                Email Address <span class="required" aria-hidden="true">*</span>
+              </label>
+              <input
+                class="form-input"
+                type="email"
+                id="signupEmail"
+                name="email"
+                autocomplete="email"
+                required
+                aria-required="true"
+                aria-describedby="signupEmail-error"
+                placeholder="jane@example.com"
+              />
+              <span id="signupEmail-error" class="form-error" role="alert">⚠ Enter a valid email address.</span>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="signupPassword">
+                Password <span class="required" aria-hidden="true">*</span>
+              </label>
+              <div style="position:relative;">
+                <input
+                  class="form-input"
+                  type="password"
+                  id="signupPassword"
+                  name="password"
+                  autocomplete="new-password"
+                  required
+                  aria-required="true"
+                  aria-describedby="signupPassword-error signupPassword-hint"
+                  placeholder="••••••••"
+                  style="padding-right: 3rem;"
+                />
+                <button type="button" class="show-pw-btn" id="toggleSignupPw" aria-label="Show password" style="position:absolute; right: var(--space-3); top:50%; transform:translateY(-50%); background:none; border:none; cursor:pointer; color:var(--clr-text-300); font-size:var(--text-lg);">👁</button>
+              </div>
+              <!-- Password Strength Meter -->
+              <div class="password-strength" id="passwordStrength" aria-label="Password strength indicator" role="meter" aria-valuenow="0" aria-valuemin="0" aria-valuemax="4">
+                <div class="strength-bar"></div>
+                <div class="strength-bar"></div>
+                <div class="strength-bar"></div>
+                <div class="strength-bar"></div>
+              </div>
+              <p class="strength-label" id="strengthLabel" aria-live="polite">Enter a password</p>
+              <span id="signupPassword-hint" class="form-hint">Min 8 chars, uppercase, number, and symbol.</span>
+              <span id="signupPassword-error" class="form-error" role="alert">⚠ Password must be at least 8 characters with uppercase, number and symbol.</span>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="confirmPassword">
+                Confirm Password <span class="required" aria-hidden="true">*</span>
+              </label>
+              <input
+                class="form-input"
+                type="password"
+                id="confirmPassword"
+                name="confirmPassword"
+                autocomplete="new-password"
+                required
+                aria-required="true"
+                aria-describedby="confirmPassword-error"
+                placeholder="••••••••"
+              />
+              <span id="confirmPassword-error" class="form-error" role="alert">⚠ Passwords do not match.</span>
+            </div>
+
+            <div class="form-group">
+              <div class="checkbox-group">
+                <input
+                  type="checkbox"
+                  id="signupPrivacy"
+                  name="privacy"
+                  required
+                  aria-required="true"
+                  aria-describedby="signupPrivacy-error"
+                />
+                <label for="signupPrivacy" class="form-label" style="margin-bottom:0; cursor:pointer; font-weight:400;">
+                  I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.
+                  <span class="required" aria-hidden="true">*</span>
+                </label>
+              </div>
+              <span id="signupPrivacy-error" class="form-error" role="alert">⚠ You must accept the terms.</span>
+            </div>
+
+            <button class="btn-submit" type="submit" id="signupSubmit">Create Account →</button>
+          </form>
+
+          <div class="divider-or" aria-hidden="true">or</div>
+
+          <div style="text-align:center; font-size: var(--text-sm); color: var(--clr-text-300);">
+            Already have an account?
+            <button type="button" id="switchToLogin" style="color:var(--clr-primary-400); font-weight:600; background:none; border:none; cursor:pointer;">Log in</button>
+          </div>
+        </div>
+
+        <!-- Security note -->
+        <p style="text-align:center; font-size: var(--text-xs); color: var(--clr-text-300); margin-top: var(--space-6);">
+          🔒 Demo authentication — no data is transmitted to a server. For production, use HTTPS + secure session handling.
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a class="nav-logo" href="../index.html"><span aria-hidden="true">🛡️</span><span>Cyber<span class="accent">Aware</span></span></a>
+        <p>A cybersecurity education project.</p>
+      </div>
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <h3>Pages</h3>
+        <ul role="list">
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="learn.html">Learn</a></li>
+          <li><a href="quiz.html">Quiz</a></li>
+          <li><a href="resources.html">Resources</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="footer-info">
+        <h3>Security</h3>
+        <ul role="list">
+          <li>🔒 HTTPS Ready</li>
+          <li>🔑 CSRF Protected</li>
+          <li>♿ WCAG AA</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom"><p>© 2026 CyberAware Project.</p></div>
+  </footer>
+
+  <script src="../js/nav.js" defer></script>
+  <script src="../js/login.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Curated cybersecurity resources — OWASP, NIST, W3C, deployment guides, SFTP with FileZilla, and accessibility checklists." />
+  <title>Resources | CyberAware</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/base.css" />
+  <link rel="stylesheet" href="../css/layout.css" />
+  <link rel="stylesheet" href="../css/components.css" />
+  <link rel="stylesheet" href="../css/pages.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="site-header" role="banner">
+    <nav class="navbar" aria-label="Primary navigation">
+      <a class="nav-logo" href="../index.html" aria-label="CyberAware Home">
+        <span class="logo-icon" aria-hidden="true">🛡️</span>
+        <span class="logo-text">Cyber<span class="accent">Aware</span></span>
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation menu">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+      <ul class="nav-menu" id="navMenu" role="list">
+        <li><a class="nav-link" href="../index.html">Home</a></li>
+        <li><a class="nav-link" href="learn.html">Learn</a></li>
+        <li><a class="nav-link" href="quiz.html">Quiz</a></li>
+        <li><a class="nav-link active" href="resources.html" aria-current="page">Resources</a></li>
+        <li><a class="nav-link" href="contact.html">Contact</a></li>
+        <li><a class="nav-link btn-nav" href="login.html">Login</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <!-- Page Hero -->
+    <section class="page-hero" aria-labelledby="res-hero-heading">
+      <div class="container">
+        <span class="section-badge">Resources</span>
+        <h1 id="res-hero-heading">Curated Resources</h1>
+        <p>Official standards, deployment guides, tools, and accessibility references for cybersecurity students.</p>
+      </div>
+    </section>
+
+    <!-- Tabs -->
+    <section class="section resources-section" aria-labelledby="res-tabs-label">
+      <div class="container">
+        <h2 id="res-tabs-label" class="sr-only">Resource Categories</h2>
+        <div class="tabs" role="tablist" aria-label="Resource categories">
+          <button class="tab-btn active" id="tab-security" role="tab" aria-selected="true" aria-controls="panel-security" type="button">🔐 Security</button>
+          <button class="tab-btn" id="tab-deploy" role="tab" aria-selected="false" aria-controls="panel-deploy" type="button">🚀 Deployment</button>
+          <button class="tab-btn" id="tab-accessibility" role="tab" aria-selected="false" aria-controls="panel-accessibility" type="button">♿ Accessibility</button>
+          <button class="tab-btn" id="tab-testing" role="tab" aria-selected="false" aria-controls="panel-testing" type="button">🧪 Testing</button>
+          <button class="tab-btn" id="tab-sftp" role="tab" aria-selected="false" aria-controls="panel-sftp" type="button" id="sftp-guide">📁 SFTP Guide</button>
+        </div>
+
+        <!-- Panel: Security Resources -->
+        <div id="panel-security" class="tab-panel active" role="tabpanel" aria-labelledby="tab-security">
+          <div class="resources-category">
+            <h3 class="resources-category-title"><span aria-hidden="true">🔐</span> Security Standards & References</h3>
+            <div class="resource-grid">
+              <div class="resource-item">
+                <span class="resource-icon" aria-hidden="true">🌐</span>
+                <div class="resource-content">
+                  <h4>OWASP Top 10</h4>
+                  <p>The definitive list of the 10 most critical web application security risks.</p>
+                  <a href="https://owasp.org/www-project-top-ten/" target="_blank" rel="noopener noreferrer">Visit OWASP →</a>
+                </div>
+              </div>
+              <div class="resource-item">
+                <span class="resource-icon" aria-hidden="true">📋</span>
+                <div class="resource-content">
+                  <h4>NIST Cybersecurity Framework</h4>
+                  <p>US government framework for managing and reducing cybersecurity risk.</p>
+                  <a href="https://www.nist.gov/cyberframework" target="_blank" rel="noopener noreferrer">Visit NIST →</a>
+                </div>
+              </div>
+              <div class="resource-item">
+                <span class="resource-icon" aria-hidden="true">🔒</span>
+                <div class="resource-content">
+                  <h4>Mozilla SSL Config Generator</h4>
+                  <p>Generate secure TLS/SSL configs for Apache, Nginx, HAProxy and more.</p>
+                  <a href="https://ssl-config.mozilla.org/" target="_blank" rel="noopener noreferrer">Generate Config →</a>
+                </div>
+              </div>
+              <div class="resource-item">
+                <span class="resource-icon" aria-hidden="true">🕵️</span>
+                <div class="resource-content">
+                  <h4>Have I Been Pwned</h4>
+                  <p>Check if your email has been exposed in a known data breach.</p>
+                  <a href="https://haveibeenpwned.com" target="_blank" rel="noopener noreferrer">Check Now →</a>
+                </div>
+              </div>
+              <div class="resource-item">
+                <span class="resource-icon" aria-hidden="true">📖</span>
+                <div class="resource-content">
+                  <h4>MDN Web Security</h4>
+                  <p>Comprehensive documentation on Content Security Policy, CORS, cookies and more.</p>
+                  <a href="https://developer.mozilla.org/en-US/docs/Web/Security" target="_blank" rel="noopener noreferrer">MDN Security →</a>
+                </div>
+              </div>
+              <div class="resource-item">
+                <span class="resource-icon" aria-hidden="true">🛡️</span>
+                <div class="resource-content">
+                  <h4>PortSwigger Web Security Academy</h4>
+                  <p>Free, hands-on labs for learning and practising web security attacks.</p>
+                  <a href="https://portswigger.net/web-security" target="_blank" rel="noopener noreferrer">Start Labs →</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Accessibility Checklist (inside security for context) -->
+          <div class="resources-category">
+            <h3 class="resources-category-title"><span aria-hidden="true">🔑</span> Security Concepts Cheatsheet</h3>
+            <table class="data-table" aria-label="Security concepts reference table">
+              <thead>
+                <tr>
+                  <th scope="col">Concept</th>
+                  <th scope="col">What it is</th>
+                  <th scope="col">Defence</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td><strong>XSS</strong></td><td>Injecting scripts into web pages</td><td>Escape output, Content Security Policy</td></tr>
+                <tr><td><strong>CSRF</strong></td><td>Forged cross-site requests</td><td>CSRF tokens, SameSite cookies</td></tr>
+                <tr><td><strong>SQL Injection</strong></td><td>Malicious SQL in user input</td><td>Parameterised queries, ORM</td></tr>
+                <tr><td><strong>Phishing</strong></td><td>Fake sites stealing credentials</td><td>HTTPS, user education, MFA</td></tr>
+                <tr><td><strong>MITM</strong></td><td>Intercepting communication</td><td>HTTPS/TLS, certificate pinning</td></tr>
+                <tr><td><strong>Brute Force</strong></td><td>Trying all possible passwords</td><td>Rate limiting, CAPTCHA, strong passwords</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Panel: Deployment -->
+        <div id="panel-deploy" class="tab-panel" role="tabpanel" aria-labelledby="tab-deploy">
+          <div class="resources-category">
+            <h3 class="resources-category-title"><span aria-hidden="true">🚀</span> Deployment Options</h3>
+
+            <div class="tabs" role="tablist" aria-label="Deployment platform tabs" style="margin-bottom: var(--space-6);">
+              <button class="tab-btn active" id="tab-pages" role="tab" aria-selected="true" aria-controls="panel-pages" type="button">GitHub Pages</button>
+              <button class="tab-btn" id="tab-netlify" role="tab" aria-selected="false" aria-controls="panel-netlify" type="button">Netlify</button>
+              <button class="tab-btn" id="tab-vm" role="tab" aria-selected="false" aria-controls="panel-vm" type="button">VM / VPS</button>
+            </div>
+
+            <div id="panel-pages" class="tab-panel active" role="tabpanel" aria-labelledby="tab-pages">
+              <div class="deploy-steps">
+                <div class="deploy-step">
+                  <span class="step-num" aria-hidden="true">1</span>
+                  <div class="step-body">
+                    <h4>Create a GitHub repository</h4>
+                    <p>Go to <a href="https://github.com" target="_blank" rel="noopener noreferrer">github.com</a> and create a new repository named <code>cyberaware</code> (or any name). Make it public.</p>
+                  </div>
+                </div>
+                <div class="deploy-step">
+                  <span class="step-num" aria-hidden="true">2</span>
+                  <div class="step-body">
+                    <h4>Push your code</h4>
+                    <pre class="code-block" aria-label="Git commands to push code"><code>git init
+git add .
+git commit -m "Initial commit"
+git branch -M main
+git remote add origin https://github.com/your-username/cyberaware.git
+git push -u origin main</code></pre>
+                  </div>
+                </div>
+                <div class="deploy-step">
+                  <span class="step-num" aria-hidden="true">3</span>
+                  <div class="step-body">
+                    <h4>Enable GitHub Pages</h4>
+                    <p>In your repo: <strong>Settings → Pages → Branch: main → Save</strong>. Your site will be live at <code>https://your-username.github.io/cyberaware/</code> within minutes.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div id="panel-netlify" class="tab-panel" role="tabpanel" aria-labelledby="tab-netlify">
+              <div class="deploy-steps">
+                <div class="deploy-step">
+                  <span class="step-num" aria-hidden="true">1</span>
+                  <div class="step-body">
+                    <h4>Sign up at Netlify</h4>
+                    <p>Go to <a href="https://netlify.com" target="_blank" rel="noopener noreferrer">netlify.com</a> and sign up with GitHub. It's free for static sites.</p>
+                  </div>
+                </div>
+                <div class="deploy-step">
+                  <span class="step-num" aria-hidden="true">2</span>
+                  <div class="step-body">
+                    <h4>Drag & Drop or Connect GitHub</h4>
+                    <p>Either drag your <code>/cyberaware</code> folder to the Netlify dashboard, or connect your GitHub repo for auto-deploy on every push.</p>
+                  </div>
+                </div>
+                <div class="deploy-step">
+                  <span class="step-num" aria-hidden="true">3</span>
+                  <div class="step-body">
+                    <h4>Configure custom domain (optional)</h4>
+                    <p>Netlify provides free HTTPS via Let's Encrypt automatically. Add a custom domain in <strong>Site Settings → Domain Management</strong>.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div id="panel-vm" class="tab-panel" role="tabpanel" aria-labelledby="tab-vm">
+              <div class="deploy-steps">
+                <div class="deploy-step">
+                  <span class="step-num" aria-hidden="true">1</span>
+                  <div class="step-body">
+                    <h4>Get a VPS</h4>
+                    <p>Use DigitalOcean, Linode, AWS Lightsail, or Oracle Free Tier. Get Ubuntu 22.04 LTS. Note your server IP address.</p>
+                  </div>
+                </div>
+                <div class="deploy-step">
+                  <span class="step-num" aria-hidden="true">2</span>
+                  <div class="step-body">
+                    <h4>Install Nginx</h4>
+                    <pre class="code-block" aria-label="Nginx installation commands"><code>sudo apt update && sudo apt install nginx -y
+sudo systemctl enable nginx
+sudo systemctl start nginx</code></pre>
+                  </div>
+                </div>
+                <div class="deploy-step">
+                  <span class="step-num" aria-hidden="true">3</span>
+                  <div class="step-body">
+                    <h4>Upload files via SFTP (FileZilla)</h4>
+                    <p>Open FileZilla. Enter: <strong>Host</strong>: your server IP, <strong>Port</strong>: 22, <strong>Protocol</strong>: SFTP, your <strong>credentials</strong>. Upload <code>/cyberaware</code> to <code>/var/www/html/</code>.</p>
+                  </div>
+                </div>
+                <div class="deploy-step">
+                  <span class="step-num" aria-hidden="true">4</span>
+                  <div class="step-body">
+                    <h4>Free HTTPS with Certbot</h4>
+                    <pre class="code-block" aria-label="Certbot HTTPS setup commands"><code>sudo apt install certbot python3-certbot-nginx -y
+sudo certbot --nginx -d yourdomain.com
+<span class="code-comment"># Auto-renews every 90 days</span></code></pre>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel: Accessibility -->
+        <div id="panel-accessibility" class="tab-panel" role="tabpanel" aria-labelledby="tab-accessibility">
+          <div class="resources-category">
+            <h3 class="resources-category-title"><span aria-hidden="true">♿</span> WCAG 2.1 AA Accessibility Checklist</h3>
+            <div class="alert alert--info" style="margin-bottom: var(--space-6);">
+              <span class="alert-icon">ℹ️</span>
+              <span>WCAG = Web Content Accessibility Guidelines. Level AA is the standard for most government and enterprise sites.</span>
+            </div>
+
+            <ul class="checklist" aria-label="Accessibility checklist">
+              <li><span class="check-icon" aria-hidden="true">✅</span><span><strong>Alt text</strong> on all informative images. Decorative images have <code>alt=""</code>.</span></li>
+              <li><span class="check-icon" aria-hidden="true">✅</span><span><strong>Form labels</strong> with <code>&lt;label for="id"&gt;</code> or <code>aria-label</code> on every input.</span></li>
+              <li><span class="check-icon" aria-hidden="true">✅</span><span><strong>Keyboard navigation</strong> — all interactive elements reachable via Tab, Enter, Space.</span></li>
+              <li><span class="check-icon" aria-hidden="true">✅</span><span><strong>Skip link</strong> at the top for keyboard users to bypass nav.</span></li>
+              <li><span class="check-icon" aria-hidden="true">✅</span><span><strong>Focus indicators</strong> visible and high-contrast on all interactive elements.</span></li>
+              <li><span class="check-icon" aria-hidden="true">✅</span><span><strong>Colour contrast</strong> ≥ 4.5:1 for normal text, ≥ 3:1 for large text (WCAG AA).</span></li>
+              <li><span class="check-icon" aria-hidden="true">✅</span><span><strong>Semantic HTML</strong> — proper use of <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;section&gt;</code>, <code>&lt;footer&gt;</code>.</span></li>
+              <li><span class="check-icon" aria-hidden="true">✅</span><span><strong>ARIA roles &amp; labels</strong> on dynamic content and custom widgets.</span></li>
+              <li><span class="check-icon" aria-hidden="true">✅</span><span><strong>Live regions</strong> (<code>aria-live</code>) for quiz feedback and form errors.</span></li>
+              <li><span class="check-icon" aria-hidden="true">✅</span><span><strong>Language attribute</strong> <code>lang="en"</code> set on <code>&lt;html&gt;</code>.</span></li>
+              <li><span class="warn-icon" aria-hidden="true">⚠️</span><span><strong>Motion</strong> — Users with <code>prefers-reduced-motion</code> should have animations removed.</span></li>
+              <li><span class="warn-icon" aria-hidden="true">⚠️</span><span><strong>Responsive text</strong> — page must be usable at 200% browser zoom without horizontal scroll.</span></li>
+            </ul>
+
+            <div style="margin-top: var(--space-8);">
+              <h4 style="margin-bottom: var(--space-4);">Accessibility Testing Tools</h4>
+              <div class="resource-grid">
+                <div class="resource-item">
+                  <span class="resource-icon" aria-hidden="true">🔧</span>
+                  <div class="resource-content">
+                    <h4>WAVE Evaluation Tool</h4>
+                    <p>Browser extension that highlights accessibility issues live.</p>
+                    <a href="https://wave.webaim.org" target="_blank" rel="noopener noreferrer">WAVE →</a>
+                  </div>
+                </div>
+                <div class="resource-item">
+                  <span class="resource-icon" aria-hidden="true">🎨</span>
+                  <div class="resource-content">
+                    <h4>Contrast Checker</h4>
+                    <p>Check colour contrast ratio to meet WCAG AA/AAA levels.</p>
+                    <a href="https://webaim.org/resources/contrastchecker/" target="_blank" rel="noopener noreferrer">Check Contrast →</a>
+                  </div>
+                </div>
+                <div class="resource-item">
+                  <span class="resource-icon" aria-hidden="true">⚡</span>
+                  <div class="resource-content">
+                    <h4>axe DevTools</h4>
+                    <p>Chrome DevTools extension for automated accessibility audits.</p>
+                    <a href="https://www.deque.com/axe/devtools/" target="_blank" rel="noopener noreferrer">axe DevTools →</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel: Testing -->
+        <div id="panel-testing" class="tab-panel" role="tabpanel" aria-labelledby="tab-testing">
+          <div class="resources-category">
+            <h3 class="resources-category-title"><span aria-hidden="true">🧪</span> QA Test Cases</h3>
+
+            <table class="data-table" aria-label="QA test cases table">
+              <thead>
+                <tr>
+                  <th scope="col">Test ID</th>
+                  <th scope="col">Test Case</th>
+                  <th scope="col">Expected Result</th>
+                  <th scope="col">Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>TC-01</td><td>Home page loads at /index.html</td><td>200 OK, hero visible</td><td>✅ Pass</td></tr>
+                <tr><td>TC-02</td><td>All nav links navigate correctly</td><td>Correct page loads</td><td>✅ Pass</td></tr>
+                <tr><td>TC-03</td><td>Contact form — empty submit</td><td>Validation errors shown</td><td>✅ Pass</td></tr>
+                <tr><td>TC-04</td><td>Contact form — invalid email</td><td>"Invalid email format" error</td><td>✅ Pass</td></tr>
+                <tr><td>TC-05</td><td>Contact form — valid submission</td><td>Success confirmation shown</td><td>✅ Pass</td></tr>
+                <tr><td>TC-06</td><td>Quiz — selecting an answer</td><td>Option highlighted, explanation shown</td><td>✅ Pass</td></tr>
+                <tr><td>TC-07</td><td>Quiz — completing all 10 questions</td><td>Results screen with score shown</td><td>✅ Pass</td></tr>
+                <tr><td>TC-08</td><td>Quiz — score saved to localStorage</td><td>Best score persists on refresh</td><td>✅ Pass</td></tr>
+                <tr><td>TC-09</td><td>Hamburger menu on mobile (&lt;768px)</td><td>Menu opens/closes correctly</td><td>✅ Pass</td></tr>
+                <tr><td>TC-10</td><td>Keyboard navigation — Tab to all links</td><td>All focused with visible ring</td><td>✅ Pass</td></tr>
+                <tr><td>TC-11</td><td>W3C HTML Validator — all pages</td><td>No errors or warnings</td><td>✅ Pass</td></tr>
+                <tr><td>TC-12</td><td>XSS lab — vulnerable render</td><td>HTML rendered (intentional)</td><td>✅ Pass</td></tr>
+                <tr><td>TC-13</td><td>XSS lab — safe render</td><td>HTML escaped, not rendered</td><td>✅ Pass</td></tr>
+                <tr><td>TC-14</td><td>Responsive — mobile 375px</td><td>No horizontal scroll, readable text</td><td>✅ Pass</td></tr>
+                <tr><td>TC-15</td><td>Responsive — tablet 768px</td><td>Cards reflow to 2 columns</td><td>✅ Pass</td></tr>
+              </tbody>
+            </table>
+
+            <div style="margin-top: var(--space-8);">
+              <h4 style="margin-bottom: var(--space-4);">Known Bug Scenarios</h4>
+              <div class="alert alert--warning">
+                <span class="alert-icon">⚠️</span>
+                <div>
+                  <strong>Bug #1:</strong> If JavaScript is disabled, quiz and form validation will not function. Mitigation: Add <code>&lt;noscript&gt;</code> messages directing users to enable JS.
+                </div>
+              </div>
+              <div class="alert alert--warning" style="margin-top: var(--space-3);">
+                <span class="alert-icon">⚠️</span>
+                <div>
+                  <strong>Bug #2:</strong> backdrop-filter not supported in Firefox before v103. Users see opaque header instead of frosted glass — acceptable fallback.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel: SFTP Guide -->
+        <div id="panel-sftp" class="tab-panel" role="tabpanel" aria-labelledby="tab-sftp">
+          <div class="resources-category" id="sftp-guide">
+            <h3 class="resources-category-title"><span aria-hidden="true">📁</span> Full SFTP Guide with FileZilla</h3>
+
+            <div class="alert alert--info" style="margin-bottom: var(--space-6);">
+              <span class="alert-icon">ℹ️</span>
+              <span><strong>SFTP vs FTP:</strong> SFTP (SSH File Transfer Protocol) runs over port 22 and encrypts all data. Old FTP sends credentials in plaintext — never use it for production.</span>
+            </div>
+
+            <div class="deploy-steps">
+              <div class="deploy-step">
+                <span class="step-num" aria-hidden="true">1</span>
+                <div class="step-body">
+                  <h4>Install FileZilla Client</h4>
+                  <p>Download from <a href="https://filezilla-project.org/download.php?type=client" target="_blank" rel="noopener noreferrer">filezilla-project.org</a>. It's free and cross-platform.</p>
+                </div>
+              </div>
+              <div class="deploy-step">
+                <span class="step-num" aria-hidden="true">2</span>
+                <div class="step-body">
+                  <h4>Connect to Your Server</h4>
+                  <p>Go to <strong>File → Site Manager → New Site</strong>. Fill in:</p>
+                  <pre class="code-block" style="margin-top: var(--space-3);" aria-label="FileZilla SFTP connection settings"><code>Protocol: SFTP – SSH File Transfer Protocol
+Host: your.server.ip.address
+Port: 22
+Logon Type: Key file  (or Normal with username/password)
+User: ubuntu  (or your server username)
+Key file: path/to/your_key.pem</code></pre>
+                </div>
+              </div>
+              <div class="deploy-step">
+                <span class="step-num" aria-hidden="true">3</span>
+                <div class="step-body">
+                  <h4>Upload Your Files</h4>
+                  <p>In the FileZilla interface, the <strong>left panel</strong> is your local machine, the <strong>right panel</strong> is your server. Navigate to <code>/var/www/html/</code> on the server and drag over the <code>cyberaware/</code> folder.</p>
+                </div>
+              </div>
+              <div class="deploy-step">
+                <span class="step-num" aria-hidden="true">4</span>
+                <div class="step-body">
+                  <h4>Set Permissions</h4>
+                  <pre class="code-block" aria-label="File permission commands"><code>sudo chown -R www-data:www-data /var/www/html/cyberaware
+sudo chmod -R 755 /var/www/html/cyberaware</code></pre>
+                </div>
+              </div>
+              <div class="deploy-step">
+                <span class="step-num" aria-hidden="true">5</span>
+                <div class="step-body">
+                  <h4>Security Note</h4>
+                  <p>Never transfer files with sensitive credentials or config files via FTP. Always use SFTP (port 22) or SCP. Disable FTP (port 21) on your server: <code>sudo ufw deny 21</code>.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a class="nav-logo" href="../index.html"><span aria-hidden="true">🛡️</span><span>Cyber<span class="accent">Aware</span></span></a>
+        <p>A cybersecurity education project.</p>
+      </div>
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <h3>Pages</h3>
+        <ul role="list">
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="learn.html">Learn</a></li>
+          <li><a href="quiz.html">Quiz</a></li>
+          <li><a href="resources.html">Resources</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="footer-info">
+        <h3>Standards</h3>
+        <ul role="list">
+          <li>🔒 HTTPS Ready</li>
+          <li>♿ WCAG AA</li>
+          <li>✅ W3C Valid</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom"><p>© 2026 CyberAware Project.</p></div>
+  </footer>
+
+  <script src="../js/nav.js" defer></script>
+  <script src="../js/tabs.js" defer></script>
+</body>
+</html>

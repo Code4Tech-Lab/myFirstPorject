@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Contact the CyberAware team — send a message, report issues, or ask about the project." />
+  <title>Contact | CyberAware</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/base.css" />
+  <link rel="stylesheet" href="../css/layout.css" />
+  <link rel="stylesheet" href="../css/components.css" />
+  <link rel="stylesheet" href="../css/pages.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="site-header" role="banner">
+    <nav class="navbar" aria-label="Primary navigation">
+      <a class="nav-logo" href="../index.html" aria-label="CyberAware Home">
+        <span class="logo-icon" aria-hidden="true">🛡️</span>
+        <span class="logo-text">Cyber<span class="accent">Aware</span></span>
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation menu">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+      <ul class="nav-menu" id="navMenu" role="list">
+        <li><a class="nav-link" href="../index.html">Home</a></li>
+        <li><a class="nav-link" href="learn.html">Learn</a></li>
+        <li><a class="nav-link" href="quiz.html">Quiz</a></li>
+        <li><a class="nav-link" href="resources.html">Resources</a></li>
+        <li><a class="nav-link active" href="contact.html" aria-current="page">Contact</a></li>
+        <li><a class="nav-link btn-nav" href="login.html">Login</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <!-- Page Hero -->
+    <section class="page-hero" aria-labelledby="contact-hero-heading">
+      <div class="container">
+        <span class="section-badge">Get in Touch</span>
+        <h1 id="contact-hero-heading">Contact Us</h1>
+        <p>Questions about the project? Report an issue or accessibility concern? We'd love to hear from you.</p>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section" style="background: var(--clr-bg-800);" aria-labelledby="contact-form-heading">
+      <div class="container">
+        <div class="contact-layout">
+
+          <!-- Contact Form -->
+          <div>
+            <h2 id="contact-form-heading" style="margin-bottom: var(--space-8);">Send a Message</h2>
+
+            <!-- Success / Error alerts (shown after submit) -->
+            <div id="formSuccess" class="alert alert--success" style="display:none;" role="alert" aria-live="assertive">
+              <span class="alert-icon">✅</span>
+              <span>Message sent! We'll get back to you within 1–2 business days. (Demo: no server — form is simulated.)</span>
+            </div>
+            <div id="formError" class="alert alert--error" style="display:none;" role="alert" aria-live="assertive">
+              <span class="alert-icon">❌</span>
+              <span id="formErrorMsg">Please fix the errors above and try again.</span>
+            </div>
+
+            <form id="contactForm" novalidate aria-label="Contact form">
+              <!-- CSRF Token (simulated) -->
+              <input type="hidden" name="csrf_token" id="csrfToken" value="" aria-hidden="true" />
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="firstName">
+                    First Name <span class="required" aria-hidden="true">*</span>
+                  </label>
+                  <input
+                    class="form-input"
+                    type="text"
+                    id="firstName"
+                    name="firstName"
+                    autocomplete="given-name"
+                    required
+                    aria-required="true"
+                    aria-describedby="firstName-error"
+                    placeholder="Jane"
+                  />
+                  <span id="firstName-error" class="form-error" role="alert">⚠ First name is required.</span>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="lastName">
+                    Last Name <span class="required" aria-hidden="true">*</span>
+                  </label>
+                  <input
+                    class="form-input"
+                    type="text"
+                    id="lastName"
+                    name="lastName"
+                    autocomplete="family-name"
+                    required
+                    aria-required="true"
+                    aria-describedby="lastName-error"
+                    placeholder="Doe"
+                  />
+                  <span id="lastName-error" class="form-error" role="alert">⚠ Last name is required.</span>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="email">
+                  Email Address <span class="required" aria-hidden="true">*</span>
+                </label>
+                <input
+                  class="form-input"
+                  type="email"
+                  id="email"
+                  name="email"
+                  autocomplete="email"
+                  required
+                  aria-required="true"
+                  aria-describedby="email-error email-hint"
+                  placeholder="jane@example.com"
+                />
+                <span id="email-hint" class="form-hint">We'll never share your email.</span>
+                <span id="email-error" class="form-error" role="alert">⚠ Please enter a valid email address.</span>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="phone">
+                  Phone Number <span style="color:var(--clr-text-300); font-weight:400;">(optional)</span>
+                </label>
+                <input
+                  class="form-input"
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  autocomplete="tel"
+                  aria-describedby="phone-error phone-hint"
+                  placeholder="+1 (555) 000-0000"
+                />
+                <span id="phone-hint" class="form-hint">Format: +1 (555) 000-0000 or 07XXXXXXXXX</span>
+                <span id="phone-error" class="form-error" role="alert">⚠ Please enter a valid phone number.</span>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="subject">
+                  Subject <span class="required" aria-hidden="true">*</span>
+                </label>
+                <select
+                  class="form-select"
+                  id="subject"
+                  name="subject"
+                  required
+                  aria-required="true"
+                  aria-describedby="subject-error"
+                >
+                  <option value="">Select a subject…</option>
+                  <option value="general">General Enquiry</option>
+                  <option value="bug">Report a Bug</option>
+                  <option value="accessibility">Accessibility Issue</option>
+                  <option value="security">Security Concern</option>
+                  <option value="collaboration">Collaboration</option>
+                </select>
+                <span id="subject-error" class="form-error" role="alert">⚠ Please select a subject.</span>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="message">
+                  Message <span class="required" aria-hidden="true">*</span>
+                </label>
+                <textarea
+                  class="form-textarea"
+                  id="message"
+                  name="message"
+                  required
+                  aria-required="true"
+                  aria-describedby="message-error message-hint"
+                  placeholder="Tell us about your question, issue, or idea…"
+                  rows="5"
+                  maxlength="2000"
+                ></textarea>
+                <span id="message-hint" class="form-hint">
+                  <span id="charCount">0</span>/2000 characters
+                </span>
+                <span id="message-error" class="form-error" role="alert">⚠ Message must be at least 20 characters.</span>
+              </div>
+
+              <div class="form-group">
+                <div class="checkbox-group">
+                  <input
+                    type="checkbox"
+                    id="privacy"
+                    name="privacy"
+                    required
+                    aria-required="true"
+                    aria-describedby="privacy-error"
+                  />
+                  <label for="privacy" class="form-label" style="margin-bottom:0; cursor:pointer;">
+                    I agree to the privacy policy and understand my data is used only to respond to my enquiry.
+                    <span class="required" aria-hidden="true">*</span>
+                  </label>
+                </div>
+                <span id="privacy-error" class="form-error" role="alert">⚠ You must accept the privacy policy.</span>
+              </div>
+
+              <button class="btn-submit" type="submit" id="contactSubmit" aria-label="Send contact message">
+                Send Message →
+              </button>
+            </form>
+          </div>
+
+          <!-- Contact Info Sidebar -->
+          <aside aria-label="Contact information">
+            <div class="contact-info-card">
+              <h3 style="margin-bottom: var(--space-2);">Other Ways to Reach Us</h3>
+              <p style="font-size: var(--text-sm); margin-bottom: var(--space-6);">Use these channels for quick questions or collaboration.</p>
+
+              <div class="contact-info-item">
+                <span class="contact-info-icon" aria-hidden="true">✉️</span>
+                <div class="contact-info-body">
+                  <h4>Email</h4>
+                  <p><a href="mailto:hello@cyberaware.example">hello@cyberaware.example</a></p>
+                </div>
+              </div>
+
+              <div class="contact-info-item">
+                <span class="contact-info-icon" aria-hidden="true">🐙</span>
+                <div class="contact-info-body">
+                  <h4>GitHub</h4>
+                  <p><a href="https://github.com" target="_blank" rel="noopener noreferrer">github.com/cyberaware</a></p>
+                </div>
+              </div>
+
+              <div class="contact-info-item">
+                <span class="contact-info-icon" aria-hidden="true">🕐</span>
+                <div class="contact-info-body">
+                  <h4>Response Time</h4>
+                  <p>1–2 business days</p>
+                </div>
+              </div>
+
+              <div class="contact-info-item">
+                <span class="contact-info-icon" aria-hidden="true">♿</span>
+                <div class="contact-info-body">
+                  <h4>Accessibility</h4>
+                  <p>Report accessibility barriers immediately — we're committed to WCAG AA.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Team Roles (from Project Charter) -->
+            <div class="contact-info-card" style="margin-top: var(--space-6);">
+              <h3 style="margin-bottom: var(--space-5);">Project Team</h3>
+              <ul class="checklist">
+                <li><span class="check-icon" aria-hidden="true">💻</span><span><strong>Developer</strong> — HTML, CSS, JavaScript</span></li>
+                <li><span class="check-icon" aria-hidden="true">🔐</span><span><strong>Security Lead</strong> — Threat modelling, OWASP review</span></li>
+                <li><span class="check-icon" aria-hidden="true">♿</span><span><strong>Accessibility Lead</strong> — WCAG audit, screen reader testing</span></li>
+                <li><span class="check-icon" aria-hidden="true">📋</span><span><strong>Project Manager</strong> — Scope, timeline, deliverables</span></li>
+              </ul>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a class="nav-logo" href="../index.html"><span aria-hidden="true">🛡️</span><span>Cyber<span class="accent">Aware</span></span></a>
+        <p>A cybersecurity education project.</p>
+      </div>
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <h3>Pages</h3>
+        <ul role="list">
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="learn.html">Learn</a></li>
+          <li><a href="quiz.html">Quiz</a></li>
+          <li><a href="resources.html">Resources</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="footer-info">
+        <h3>Standards</h3>
+        <ul role="list">
+          <li>🔒 HTTPS Ready</li>
+          <li>♿ WCAG AA</li>
+          <li>✅ W3C Valid</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom"><p>© 2026 CyberAware Project.</p></div>
+  </footer>
+
+  <script src="../js/nav.js" defer></script>
+  <script src="../js/contact.js" defer></script>
+</body>
+</html>
