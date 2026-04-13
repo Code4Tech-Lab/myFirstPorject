@@ -10,9 +10,9 @@
 
 (function () {
   /* ─── DOM REFERENCES ─── */
-  const header    = document.querySelector('.site-header');
+  const header = document.querySelector('.site-header');
   const navToggle = document.getElementById('navToggle');
-  const navMenu   = document.getElementById('navMenu');
+  const navMenu = document.getElementById('navMenu');
 
   if (!header || !navToggle || !navMenu) return; // Guard: elements must exist
 
@@ -22,6 +22,7 @@
     navToggle.setAttribute('aria-expanded', String(isOpen));
     // Prevent body scroll when menu is open
     document.body.style.overflow = isOpen ? 'hidden' : '';
+    //document.body.classList.toggle('menu-open', isOpen);
   });
 
   /* ─── CLOSE MENU ON LINK CLICK (mobile) ─── */
@@ -30,6 +31,7 @@
       navMenu.classList.remove('is-open');
       navToggle.setAttribute('aria-expanded', 'false');
       document.body.style.overflow = '';
+      // document.body.classList.remove('menu-open');
     }
   });
 
@@ -87,7 +89,7 @@
       const user = JSON.parse(userJson);
       // Find the Login/Signup link (usually the last one before any divider or at the end)
       const authLinks = Array.from(navList.querySelectorAll('a[href*="login.html"]'));
-      
+
       authLinks.forEach(link => {
         const li = link.parentElement;
         if (li) {
