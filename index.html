@@ -1,20 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <!-- ===== META & SEO ===== -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="CyberAware – Your cybersecurity education hub. Learn, quiz, and stay secure online." />
+  <meta name="description"
+    content="CyberAware – Your cybersecurity education hub. Learn, quiz, and stay secure online. by Molla" />
   <meta name="author" content="CyberAware Team" />
   <title>CyberAware | Cybersecurity Education Hub</title>
 
   <!-- ===== FAVICON (SVG inline data URI) ===== -->
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>" />
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>" />
 
   <!-- ===== FONTS ===== -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap"
+    rel="stylesheet" />
 
   <!-- ===== STYLESHEETS ===== -->
   <link rel="stylesheet" href="css/base.css" />
@@ -22,6 +27,7 @@
   <link rel="stylesheet" href="css/components.css" />
   <link rel="stylesheet" href="css/home.css" />
 </head>
+
 <body>
 
   <!-- ===== SKIP LINK (Accessibility) ===== -->
@@ -36,7 +42,8 @@
       </a>
 
       <!-- Hamburger for mobile -->
-      <button class="nav-toggle" id="navToggle" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation menu">
+      <button class="nav-toggle" id="navToggle" aria-controls="navMenu" aria-expanded="false"
+        aria-label="Toggle navigation menu">
         <span class="hamburger-line"></span>
         <span class="hamburger-line"></span>
         <span class="hamburger-line"></span>
@@ -127,7 +134,8 @@
           <div class="arch-step" role="listitem">
             <div class="arch-step-icon" aria-hidden="true">💻</div>
             <h3>1. Browser Sends Request</h3>
-            <p>Your browser (client) sends an <strong>HTTP/HTTPS request</strong> with headers, method (GET/POST), and data to a domain name.</p>
+            <p>Your browser (client) sends an <strong>HTTP/HTTPS request</strong> with headers, method (GET/POST), and
+              data to a domain name.</p>
           </div>
 
           <div class="arch-arrow" aria-hidden="true">→</div>
@@ -135,7 +143,9 @@
           <div class="arch-step" role="listitem">
             <div class="arch-step-icon" aria-hidden="true">🌐</div>
             <h3>2. DNS Resolution</h3>
-            <p>The <strong>Domain Name System</strong> translates <code>example.com</code> into an IP address like <code>93.184.216.34</code> so packets can be routed.</p>
+            <p>The <strong>Domain Name System</strong> translates <code>example.com</code> into an IP address like
+              <code>93.184.216.34</code> so packets can be routed.
+            </p>
           </div>
 
           <div class="arch-arrow" aria-hidden="true">→</div>
@@ -143,7 +153,8 @@
           <div class="arch-step" role="listitem">
             <div class="arch-step-icon" aria-hidden="true">🖥️</div>
             <h3>3. Server Responds</h3>
-            <p>The web server processes the request, fetches resources, and responds with <strong>HTML, CSS, JS files</strong> plus an HTTP status code (200, 404, etc.).</p>
+            <p>The web server processes the request, fetches resources, and responds with <strong>HTML, CSS, JS
+                files</strong> plus an HTTP status code (200, 404, etc.).</p>
           </div>
 
           <div class="arch-arrow" aria-hidden="true">→</div>
@@ -151,7 +162,8 @@
           <div class="arch-step" role="listitem">
             <div class="arch-step-icon" aria-hidden="true">🔒</div>
             <h3>4. HTTPS Encryption</h3>
-            <p><strong>TLS/SSL</strong> encrypts the entire communication. The 🔒 padlock means data is encrypted in transit — nobody can sniff your passwords.</p>
+            <p><strong>TLS/SSL</strong> encrypts the entire communication. The 🔒 padlock means data is encrypted in
+              transit — nobody can sniff your passwords.</p>
           </div>
         </div>
 
@@ -161,7 +173,8 @@
             <h3>Deploying with SFTP & FileZilla</h3>
             <p>
               <strong>SFTP (SSH File Transfer Protocol)</strong> encrypts file uploads unlike plain FTP.
-              Use <a href="https://filezilla-project.org" target="_blank" rel="noopener noreferrer">FileZilla</a> to connect: enter your server's IP, port <code>22</code>, username, and SSH key.
+              Use <a href="https://filezilla-project.org" target="_blank" rel="noopener noreferrer">FileZilla</a> to
+              connect: enter your server's IP, port <code>22</code>, username, and SSH key.
               Great for deploying to a VPS/VM running Apache or Nginx.
               <a href="pages/resources.html#sftp-guide">Full SFTP Guide →</a>
             </p>
@@ -182,28 +195,32 @@
           <article class="card card--learn" aria-label="Learn section">
             <div class="card-icon" aria-hidden="true">📚</div>
             <h3 class="card-title">Learn</h3>
-            <p class="card-desc">Dive into topics: HTTPS, DNS, phishing, CSRF, XSS, SQL injection and more — explained for beginners.</p>
+            <p class="card-desc">Dive into topics: HTTPS, DNS, phishing, CSRF, XSS, SQL injection and more — explained
+              for beginners.</p>
             <a class="card-link" href="pages/learn.html">Explore Lessons <span aria-hidden="true">→</span></a>
           </article>
 
           <article class="card card--quiz" aria-label="Quiz section">
             <div class="card-icon" aria-hidden="true">🧠</div>
             <h3 class="card-title">Quiz</h3>
-            <p class="card-desc">Test your knowledge with 10 interactive questions. Instant feedback, score tracking, and explanations.</p>
+            <p class="card-desc">Test your knowledge with 10 interactive questions. Instant feedback, score tracking,
+              and explanations.</p>
             <a class="card-link" href="pages/quiz.html">Take Quiz <span aria-hidden="true">→</span></a>
           </article>
 
           <article class="card card--resources" aria-label="Resources section">
             <div class="card-icon" aria-hidden="true">🔗</div>
             <h3 class="card-title">Resources</h3>
-            <p class="card-desc">Curated links: OWASP, NIST, deployment guides, W3C tools, and accessibility checklists.</p>
+            <p class="card-desc">Curated links: OWASP, NIST, deployment guides, W3C tools, and accessibility checklists.
+            </p>
             <a class="card-link" href="pages/resources.html">View Resources <span aria-hidden="true">→</span></a>
           </article>
 
           <article class="card card--security" aria-label="Security section">
             <div class="card-icon" aria-hidden="true">🛡️</div>
             <h3 class="card-title">Security Lab</h3>
-            <p class="card-desc">See real vulnerability examples — weak validation, phishing simulations — then learn how to fix them.</p>
+            <p class="card-desc">See real vulnerability examples — weak validation, phishing simulations — then learn
+              how to fix them.</p>
             <a class="card-link" href="pages/learn.html#security-lab">Security Lab <span aria-hidden="true">→</span></a>
           </article>
         </div>
@@ -224,7 +241,9 @@
             <pre class="code-block" aria-label="Vulnerable code example"><code><span class="code-comment">// ❌ No validation — accepts anything</span>
 let email = document.getElementById('email').value;
 fetch('/login', { body: JSON.stringify({email}) });</code></pre>
-            <p>An attacker can submit <code>&lt;script&gt;alert(1)&lt;/script&gt;</code> as the email — this is <strong>XSS</strong>.</p>
+            <p>An attacker can submit <code>&lt;script&gt;alert(1)&lt;/script&gt;</code> as the email — this is
+              <strong>XSS</strong>.
+            </p>
           </div>
 
           <div class="security-card">
@@ -296,4 +315,5 @@ if (!emailRegex.test(email)) {
   <script src="js/nav.js" defer></script>
   <script src="js/home.js" defer></script>
 </body>
+
 </html>
