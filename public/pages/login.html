@@ -34,6 +34,7 @@
         <li><a class="nav-link" href="quiz.html">Quiz</a></li>
         <li><a class="nav-link" href="resources.html">Resources</a></li>
         <li><a class="nav-link" href="contact.html">Contact</a></li>
+        <li><a class="nav-link" href="security-lab.html">Security Lab</a></li>
         <li><a class="nav-link btn-nav active" href="login.html" aria-current="page">Login</a></li>
       </ul>
     </nav>
@@ -59,17 +60,18 @@
           <h1 class="form-title" style="font-size: var(--text-2xl);">Welcome back</h1>
           <p class="form-subtitle">Log in to track your quiz scores and progress.</p>
 
-          <div id="loginSuccess" class="alert alert--success" style="display:none;" role="alert" aria-live="assertive">
+          <div id="loginSuccess" class="alert alert--success" style="display:none;" role="alert" aria-live="assertive" tabindex="-1">
             <span class="alert-icon">✅</span>
             <span>Login successful! (Demo — no server authentication.)</span>
           </div>
-          <div id="loginError" class="alert alert--error" style="display:none;" role="alert" aria-live="assertive">
+          <div id="loginError" class="alert alert--error" style="display:none;" role="alert" aria-live="assertive" tabindex="-1">
             <span class="alert-icon">❌</span>
             <span id="loginErrorMsg">Invalid credentials.</span>
           </div>
 
           <form id="loginForm" novalidate aria-label="Login form">
-            <input type="hidden" name="csrf_token" id="loginCsrfToken" value="" aria-hidden="true" />
+            <!-- CSRF token is managed in memory by login.js (generateCSRFToken)
+                 and sent via the X-CSRF-Token request header. No hidden field needed. -->
 
             <div class="form-group">
               <label class="form-label" for="loginEmail">
@@ -135,17 +137,18 @@
           <h2 class="form-title" style="font-size: var(--text-2xl);">Create an Account</h2>
           <p class="form-subtitle">Join free and track your cybersecurity learning journey.</p>
 
-          <div id="signupSuccess" class="alert alert--success" style="display:none;" role="alert" aria-live="assertive">
+          <div id="signupSuccess" class="alert alert--success" style="display:none;" role="alert" aria-live="assertive" tabindex="-1">
             <span class="alert-icon">✅</span>
             <span>Account created! (Demo — no server. In production this would send a verification email.)</span>
           </div>
-          <div id="signupError" class="alert alert--error" style="display:none;" role="alert" aria-live="assertive">
+          <div id="signupError" class="alert alert--error" style="display:none;" role="alert" aria-live="assertive" tabindex="-1">
             <span class="alert-icon">❌</span>
             <span id="signupErrorMsg">Please fix the errors above.</span>
           </div>
 
           <form id="signupForm" novalidate aria-label="Sign up form">
-            <input type="hidden" name="csrf_token" id="signupCsrfToken" value="" aria-hidden="true" />
+            <!-- CSRF token is managed in memory by login.js (generateCSRFToken)
+                 and sent via the X-CSRF-Token request header. No hidden field needed. -->
 
             <div class="form-row">
               <div class="form-group">

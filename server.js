@@ -18,9 +18,10 @@
 
 'use strict';
 
-const express  = require('express');
-const cors     = require('cors');
-const path     = require('path');
+const express = require('express');
+const cors = require('cors');
+const path = require('path');
+const rateLimit = require('express-rate-limit');
 
 // ── DATABASE BOOTSTRAP ───────────────────────────────────────────────────────
 // Run schema migrations BEFORE anything else starts.
@@ -29,62 +30,96 @@ const { initializeDatabase } = require('./database/init');
 initializeDatabase();
 
 // ── ROUTE MODULES ────────────────────────────────────────────────────────────
-const authRoutes    = require('./routes/auth');
+const authRoutes = require('./routes/auth');
 const contactRoutes = require('./routes/contact');
 
 // ── CREATE EXPRESS APP ───────────────────────────────────────────────────────
-const app  = express();
+const app = express();
 const PORT = process.env.PORT || 3000;
+
+// ── SECURITY MIDDLEWARE: RATE LIMITING ───────────────────────────────────────
+/**
+ * Global Rate Limiter
+ * Limits each IP to 100 requests per 15 minutes.
+ * Prevents automated scraping and basic DoS.
+ */
+
+const globalLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 100,
+  message: { success: false, error: 'Too many requests, please try again later.' },
+  standardHeaders: true,
+  legacyHeaders: false,
+});
+app.use(globalLimiter);
+/**
+ * Auth Rate Limiter
+ * Stricter limit for login/register to prevent brute force.
+ */
+const authLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 20, // 20 attempts per 15 mins
+  message: { success: false, error: 'Too many login attempts. Please wait 15 minutes.' },
+});
+app.use('/api/login', authLimiter);
+app.use('/api/register', authLimiter);
 
 // ── MIDDLEWARE ───────────────────────────────────────────────────────────────
 
 /**
  * CORS — Cross-Origin Resource Sharing
- * Allows the frontend (potentially on a different port/domain) to call the API.
- * In production, replace the origin with your actual domain:
- *   origin: 'https://your-domain.com'
  */
 app.use(cors({
-  origin:  process.env.ALLOWED_ORIGIN || '*', // Lock down in production
+  origin: process.env.ALLOWED_ORIGIN || '*',
   methods: ['GET', 'POST', 'OPTIONS'],
 }));
 
 /**
- * JSON Body Parser
- * Parses incoming request bodies as JSON.
- * limit: '10kb' prevents enormous payloads (a basic DoS mitigation).
+ * Body Parsers
  */
 app.use(express.json({ limit: '10kb' }));
-
-/**
- * URL-encoded form parser (for standard HTML form submissions as fallback)
- */
 app.use(express.urlencoded({ extended: true, limit: '10kb' }));
 
 /**
- * Static File Serving
- * Express serves everything in the project root as static files.
- * This makes index.html, /css/, /js/, /pages/ all directly accessible.
- *
- * Accessing http://localhost:3000/              → serves index.html
- * Accessing http://localhost:3000/pages/quiz.html → serves that page
- * Accessing http://localhost:3000/css/base.css  → serves the CSS file
+ * Security Headers (Hardening)
  */
-app.use(express.static(path.join(__dirname)));
+app.disable('x-powered-by');
 
-// ── SECURITY HEADERS ─────────────────────────────────────────────────────────
-// Set basic security response headers on every request.
 app.use((req, res, next) => {
   // Prevent browsers from MIME-type sniffing
   res.setHeader('X-Content-Type-Options', 'nosniff');
-  // Block clickjacking — page cannot be embedded in an <iframe>
+  // Block clickjacking
   res.setHeader('X-Frame-Options', 'DENY');
-  // Force HTTPS in production (Strict-Transport-Security)
+  // Referrer Policy
+  res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
+
+  /**
+   * Content Security Policy (CSP)
+   * Restricts where resources (scripts, styles, images) can be loaded from.
+   * This is a major defense against XSS.
+   *
+   * FIX: Removed fonts.googleapis.com from script-src — that domain serves
+   * fonts/stylesheets, not scripts. Including it in script-src was an
+   * unnecessary broadening of the allowed script sources.
+   */
+  res.setHeader('Content-Security-Policy',
+    "default-src 'self'; " +
+    "script-src 'self'; " +                                    // scripts: same-origin only
+    "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; " + // styles + Google Fonts CSS
+    "font-src 'self' https://fonts.gstatic.com; " +            // font files from gstatic
+    "img-src 'self' data:; " +
+    "connect-src 'self';"
+  );
+
   if (process.env.NODE_ENV === 'production') {
     res.setHeader('Strict-Transport-Security', 'max-age=63072000; includeSubDomains');
   }
+
   next();
 });
+
+// ── STATIC FILES ─────────────────────────────────────────────────────────────
+app.use(express.static(path.join(__dirname, 'public')));
 
 // ── API ROUTES ───────────────────────────────────────────────────────────────
 // All auth routes are prefixed with /api
@@ -107,7 +142,7 @@ app.use((err, req, res, next) => { // eslint-disable-line no-unused-vars
   console.error('🔴 Unhandled error:', err.stack || err.message);
   res.status(500).json({
     success: false,
-    error:   process.env.NODE_ENV === 'production'
+    error: process.env.NODE_ENV === 'production'
       ? 'An internal server error occurred.'
       : err.message, // Show detail only in development
   });
