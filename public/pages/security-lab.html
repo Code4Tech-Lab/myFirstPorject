@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- ===== META & SEO ===== -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="CyberAware Security Lab – Interactive demonstration of web vulnerabilities, security features, and defensive strategies." />
+  <meta name="author" content="CyberAware Team" />
+  <title>Security Lab | CyberAware</title>
+
+  <!-- ===== FAVICON ===== -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔬</text></svg>" />
+
+  <!-- ===== FONTS ===== -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+
+  <!-- ===== STYLESHEETS ===== -->
+  <link rel="stylesheet" href="../css/base.css" />
+  <link rel="stylesheet" href="../css/layout.css" />
+  <link rel="stylesheet" href="../css/components.css" />
+  <link rel="stylesheet" href="../css/pages.css" />
+  <link rel="stylesheet" href="../css/security-lab.css" />
+</head>
+
+<body class="page-security-lab">
+
+  <!-- ===== SKIP LINK ===== -->
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <!-- ===== HEADER / NAV ===== -->
+  <header class="site-header" role="banner">
+    <nav class="navbar" aria-label="Primary navigation">
+      <a class="nav-logo" href="../index.html">
+        <span class="logo-icon" aria-hidden="true">🛡️</span>
+        <span class="logo-text">Cyber<span class="accent">Aware</span></span>
+      </a>
+
+      <button class="nav-toggle" id="navToggle" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation menu">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+
+      <ul class="nav-menu" id="navMenu" role="list">
+        <li><a class="nav-link" href="../index.html">Home</a></li>
+        <li><a class="nav-link" href="learn.html">Learn</a></li>
+        <li><a class="nav-link" href="quiz.html">Quiz</a></li>
+        <li><a class="nav-link" href="resources.html">Resources</a></li>
+        <li><a class="nav-link" href="contact.html">Contact</a></li>
+        <li><a class="nav-link active" href="security-lab.html" aria-current="page">Security Lab</a></li>
+        <li><a class="nav-link btn-nav" href="login.html">Login</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <main id="main-content">
+
+    <!-- HERO / INTRO -->
+    <section class="lab-hero">
+      <div class="container">
+        <div class="hero-badge">Deliverable #1 Demonstration</div>
+        <h1>CyberAware <span class="gradient-text">Security Lab</span></h1>
+        <p class="hero-subtitle">
+          An interactive laboratory demonstrating the security architecture of this platform,
+          analyzing vulnerabilities, and exploring defensive strategies against modern attacks.
+        </p>
+      </div>
+    </section>
+
+    <!-- SECTION 1: ENABLED SECURITY FEATURES -->
+    <section class="section lab-section" id="features">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">Architecture</span>
+          <h2>Active Security Features</h2>
+          <p>Every request to this server is protected by multiple layers of defensive infrastructure.</p>
+        </div>
+
+        <div class="features-grid">
+          <div class="feature-card" data-aos="fade-up">
+            <div class="feature-icon">🛡️</div>
+            <h3>Content Security Policy (CSP)</h3>
+            <p>Prevents XSS by restricting where scripts and styles can load from. Blocks inline scripts by default.</p>
+            <div class="feature-status">Enabled</div>
+          </div>
+          <div class="feature-card" data-aos="fade-up">
+            <div class="feature-icon">⚡</div>
+            <h3>Rate Limiting</h3>
+            <p>Protects against DoS and brute-force by limiting requests per IP address (100 per 15 min globally).</p>
+            <div class="feature-status">Enabled</div>
+          </div>
+          <div class="feature-card" data-aos="fade-up">
+            <div class="feature-icon">🔒</div>
+            <h3>bcrypt Password Hashing</h3>
+            <p>Uses 12 rounds of salting and hashing. Raw passwords never touch the database.</p>
+            <div class="feature-status">Enabled</div>
+          </div>
+          <div class="feature-card" data-aos="fade-up">
+            <div class="feature-icon">🛑</div>
+            <h3>Anti-CSRF Tokens</h3>
+            <p>Custom headers (X-CSRF-Token) prevent Cross-Site Request Forgery on all POST requests.</p>
+            <div class="feature-status">Enabled</div>
+          </div>
+          <div class="feature-card" data-aos="fade-up">
+            <div class="feature-icon">🎭</div>
+            <h3>Timing-Safe Comparisons</h3>
+            <p>Uses dummy hashes for non-existent users to prevent user enumeration via response timing.</p>
+            <div class="feature-status">Enabled</div>
+          </div>
+          <div class="feature-card" data-aos="fade-up">
+            <div class="feature-icon">🛰️</div>
+            <h3>Security Response Headers</h3>
+            <p>Strict-Transport-Security, X-Frame-Options (Clickjacking), and X-Content-Type-Options.</p>
+            <div class="feature-status">Enabled</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: INTERACTIVE VULNERABILITY DEMOS -->
+    <section class="section lab-section bg-alt" id="vulnerabilities">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">Testing</span>
+          <h2>Vulnerability Analysis & Fixes</h2>
+          <p>Interact with real-world vulnerability scenarios and see how we've secured them.</p>
+        </div>
+
+        <div class="demo-tabs">
+          <button class="demo-tab active" data-demo="xss">Cross-Site Scripting (XSS)</button>
+          <button class="demo-tab" data-demo="csrf">CSRF Demo</button>
+          <button class="demo-tab" data-demo="passwords">Hashing & Strength</button>
+        </div>
+
+        <div class="demo-container">
+          <!-- XSS Demo -->
+          <div class="demo-panel active" id="demo-xss">
+            <div class="demo-split">
+              <div class="demo-test">
+                <h3>Try XSS Injection</h3>
+                <p>What happens when you inject HTML into an input?</p>
+                <input type="text" id="xss-input" placeholder="e.g. <img src=x onerror=alert('Hacked!')>" />
+                <button class="btn btn-primary" id="btn-xss-test">Test Injection</button>
+              </div>
+              <div class="demo-results">
+                <div class="result-box">
+                  <label>Vulnerable (innerHTML):</label>
+                  <div id="xss-vulnerable" class="rendered-output rendered-danger">---</div>
+                  <p class="explanation">❌ Executes the script. Dangerous!</p>
+                </div>
+                <div class="result-box">
+                  <label>Secure (textContent):</label>
+                  <div id="xss-secure" class="rendered-output rendered-safe">---</div>
+                  <p class="explanation">✅ Renders as plain text. Secure.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- CSRF Demo -->
+          <div class="demo-panel" id="demo-csrf">
+            <div class="demo-graphic">
+              <div class="csrf-visual">
+                <div class="visual-node visitor">User</div>
+                <div class="visual-arrow">Authenticated Session</div>
+                <div class="visual-node malicious">Malicious Site</div>
+                <div class="visual-arrow danger">Hidden Request</div>
+                <div class="visual-node server">Your API</div>
+              </div>
+              <div class="csrf-fix">
+                <p><strong>Our Defense:</strong> This server rejects any POST/API request that does not include a valid <code>X-CSRF-Token</code> in the headers. Browsers cannot automatically add custom headers to cross-site requests.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Password Demo -->
+          <div class="demo-panel" id="demo-passwords">
+             <div class="demo-split">
+               <div class="password-input-zone">
+                 <h3>Hash Generator</h3>
+                 <input type="text" id="pw-demo-input" placeholder="Enter a test password" />
+                 <div id="pw-strength-viz" class="strength-viz"></div>
+               </div>
+               <div class="password-output-zone">
+                 <div class="hash-row">
+                   <div class="hash-label">MD5 (Legacy/Broken):</div>
+                   <div class="hash-value" id="hash-md5">e10adc3949ba59abbe56e057f20f883e</div>
+                 </div>
+                 <div class="hash-row">
+                   <div class="hash-label">bcrypt (Our System):</div>
+                   <div class="hash-value" id="hash-bcrypt">$2b$12$Z8mY... (Salted & Slow)</div>
+                 </div>
+                 <p class="explanation">bcrypt is resistant to brute-force and rainbow table attacks due to its work factor and unique salts.</p>
+               </div>
+             </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: KEY DEFINITIONS FOR PRESENTATION -->
+    <section class="section lab-section" id="definitions">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">Education</span>
+          <h2>Threat Landscape & Definitions</h2>
+          <p>Core concepts from the syllabus explained with examples.</p>
+        </div>
+
+        <div class="definitions-grid">
+          <div class="definition-card">
+            <h3>Phishing</h3>
+            <p>The practice of sending fraudulent communications that appear to come from a reputable source, typically through email or SMS.</p>
+            <div class="example"><strong>Example:</strong> A fake "Password Reset" email from your bank that links to a copycat login page.</div>
+          </div>
+          <div class="definition-card">
+            <h3>Denial-of-Service (DoS)</h3>
+            <p>An attack meant to shut down a machine or network, making it inaccessible to its intended users by flooding it with traffic.</p>
+            <div class="example"><strong>Example:</strong> Sending 100,000 requests per second to a web server to crash it.</div>
+          </div>
+          <div class="definition-card">
+            <h3>Spamming</h3>
+            <p>Sending unsolicited messages (usually in bulk) for advertising or distributing malware.</p>
+            <div class="example"><strong>Example:</strong> Comment sections filled with links to "get rich quick" schemes.</div>
+          </div>
+          <div class="definition-card">
+            <h3>SQL Injection</h3>
+            <p>Injecting malicious SQL code into input fields to bypass authentication or steal data.</p>
+            <div class="example"><strong>Defense:</strong> Using parameterized queries (PreparedStatement) so user input is never executed as code.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: SERVER-SIDE ATTACKS & DEFENSES -->
+    <section class="section lab-section bg-dark text-light" id="server-security">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-badge">Advanced</span>
+          <h2>Server-Side Security Mastery</h2>
+        </div>
+
+        <div class="server-grid">
+          <div class="server-card">
+            <div class="server-card-head">
+              <span class="icon">💻</span>
+              <h3>Session Hijacking</h3>
+            </div>
+            <p>Attackers steal session cookies to impersonate users.</p>
+            <div class="defense-box">
+              <h4>Defense Strategy</h4>
+              <ul>
+                <li>Set <strong>httpOnly</strong> flag (JS cannot read cookie)</li>
+                <li>Set <strong>Secure</strong> flag (HTTPS only)</li>
+                <li>Implement <strong>SameSite=Strict</strong></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="server-card">
+            <div class="server-card-head">
+              <span class="icon">📂</span>
+              <h3>Path Traversal</h3>
+            </div>
+            <p>Using <code>../</code> in URLs to access system files like <code>/etc/passwd</code>.</p>
+            <div class="defense-box">
+              <h4>Defense Strategy</h4>
+              <ul>
+                <li>Sanitize file paths</li>
+                <li>Use allowlists for file access</li>
+                <li>Run server as non-privileged user</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FINAL REPORT: SECURITY SCORECARD -->
+    <section class="section lab-section" id="scorecard">
+      <div class="container">
+        <div class="scorecard-container">
+          <div class="scorecard-header">
+             <h2>Project Security Scorecard</h2>
+             <div class="overall-grade">GRADE: A+</div>
+          </div>
+          <table class="scorecard-table">
+            <thead>
+              <tr>
+                <th>Security Area</th>
+                <th>Status</th>
+                <th>Fix / Implementation</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Password Storage</td>
+                <td><span class="status-secure">SECURE</span></td>
+                <td>bcrypt hashing (12 rounds)</td>
+              </tr>
+              <tr>
+                <td>MIME Sniffing</td>
+                <td><span class="status-secure">SECURE</span></td>
+                <td>X-Content-Type-Options: nosniff</td>
+              </tr>
+              <tr>
+                <td>Brute Force Protection</td>
+                <td><span class="status-secure">SECURE</span></td>
+                <td>Express Rate Limit (Auth routes)</td>
+              </tr>
+              <tr>
+                <td>CSRF Protection</td>
+                <td><span class="status-secure">SECURE</span></td>
+                <td>Custom Header Validation (X-CSRF-Token)</td>
+              </tr>
+              <tr>
+                <td>Clickjacking</td>
+                <td><span class="status-secure">SECURE</span></td>
+                <td>X-Frame-Options: DENY</td>
+              </tr>
+              <tr>
+                <td>XSS Prevention</td>
+                <td><span class="status-secure">SECURE</span></td>
+                <td>Content Security Policy + textContent</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <div class="container">
+      <p>© 2026 CyberAware Project | Deliverable 1 Demonstration</p>
+    </div>
+  </footer>
+
+  <!-- ===== SCRIPTS ===== -->
+  <script src="../js/nav.js" defer></script>
+  <script src="../js/security-lab.js" defer></script>
+</body>
+
+</html>

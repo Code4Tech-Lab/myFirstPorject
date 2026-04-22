@@ -29,11 +29,13 @@
 
   if (!form) return; // Guard
 
-  /* ─── GENERATE SIMULATED CSRF TOKEN ─── */
+  /* ─── GENERATE CSRF TOKEN ─── */
   /**
-   * Generates a random hex token to simulate CSRF protection.
-   * In production: server generates this, stores in session, and validates on form submission.
-   * @returns {string} 32-character hex token
+   * Generates a cryptographically random 32-char hex token.
+   * Sent as the X-CSRF-Token header on every API request.
+   * The server validates that this header is present and correctly formatted.
+   * Custom request headers cannot be added by cross-origin form submissions —
+   * this is the CSRF defense.
    */
   function generateCSRFToken() {
     const array = new Uint8Array(16);
@@ -41,8 +43,10 @@
     return Array.from(array).map(b => b.toString(16).padStart(2, '0')).join('');
   }
 
+  // Store in variable (not just in the DOM input) so it is accessible to fetch
+  let csrfToken = generateCSRFToken();
   if (csrfInput) {
-    csrfInput.value = generateCSRFToken();
+    csrfInput.value = csrfToken; // keep hidden input in sync for display purposes
   }
 
   /* ─── CHARACTER COUNTER ─── */
@@ -190,12 +194,19 @@
 
     fetch('/api/contact', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRF-Token': csrfToken,  // FIX: was missing — server now requires this header
+        'Accept':       'application/json',
+      },
       body: JSON.stringify(payload)
     })
     .then(response => response.json())
     .then(data => {
       if (data.success) {
+        // Rotate token after successful submission
+        csrfToken = generateCSRFToken();
+        if (csrfInput) csrfInput.value = csrfToken;
         if (successAlert) {
           const textSpan = successAlert.querySelector('span:last-child') || successAlert;
           textSpan.textContent = data.message;

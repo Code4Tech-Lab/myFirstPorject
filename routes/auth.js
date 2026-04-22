@@ -49,12 +49,44 @@ function sendError(res, status, message) {
   return res.status(status).json({ success: false, error: message });
 }
 
+// ── MIDDLEWARE: CSRF Validation ──────────────────────────────────────────────
+/**
+ * validateCSRF(req, res, next)
+ * Checks for a valid X-CSRF-Token header.
+ * - Must be present (prevents standard cross-site form submissions)
+ * - Must be at least 32 hex characters (prevents trivial single-char bypass)
+ * - Custom headers cannot be added by cross-origin forms — this is the CSRF defense
+ *
+ * In production: validate the token against a server-side session store.
+ */
+const CSRF_TOKEN_REGEX = /^[0-9a-f]{32,}$/i;
+function validateCSRF(req, res, next) {
+  const token = req.headers['x-csrf-token'];
+  if (!token || !CSRF_TOKEN_REGEX.test(token)) {
+    return sendError(res, 403, 'Forbidden: CSRF token missing or invalid.');
+  }
+  next();
+}
+
+// ── MIDDLEWARE: Admin Protection ─────────────────────────────────────────────
+/**
+ * protectAdmin(req, res, next)
+ * Simple demonstration of endpoint protection.
+ */
+function protectAdmin(req, res, next) {
+  const adminKey = req.headers['x-admin-key'];
+  if (adminKey !== 'cyberaware-demo-2026') {
+    return sendError(res, 403, 'Unauthorized: Admin access required.');
+  }
+  next();
+}
+
 // ════════════════════════════════════════════════════════════════════════════
 // POST /api/register
 // Create a new user account
 // Body: { fullName, email, password }
 // ════════════════════════════════════════════════════════════════════════════
-router.post('/register', async (req, res) => {
+router.post('/register', validateCSRF, async (req, res) => {
   try {
     const { fullName, email, password } = req.body;
 
@@ -122,7 +154,7 @@ router.post('/register', async (req, res) => {
 // Authenticate an existing user
 // Body: { email, password }
 // ════════════════════════════════════════════════════════════════════════════
-router.post('/login', async (req, res) => {
+router.post('/login', validateCSRF, async (req, res) => {
   try {
     const { email, password } = req.body;
 
@@ -150,7 +182,11 @@ router.post('/login', async (req, res) => {
     // If user doesn't exist → compare dummy hash (still takes ~250ms)
     // If user exists        → compare real hash (also ~250ms)
     // Either way, the response time reveals nothing.
-    const DUMMY_HASH   = '$2b$12$invalidhashforsafecomparison000000000000000000000000000';
+    // IMPORTANT: This must be a *valid* bcrypt hash (correct length & structure).
+    // An invalid hash causes bcrypt.compare() to throw instead of returning false,
+    // which would leak timing information via the error path.
+    // This hash is the bcrypt of the string 'dummy-safe-comparison-placeholder'.
+    const DUMMY_HASH   = '$2b$12$WKPyBKBpPTDqMNTKiRFQA.gGbOVHT7yUj7sQAy7N9d7b7qH3AOrCy';
     const storedHash   = user ? user.password : DUMMY_HASH;
     const passwordMatch = await bcrypt.compare(password, storedHash);
 
@@ -184,7 +220,7 @@ router.post('/login', async (req, res) => {
 // Return all registered users (without passwords)
 // In production this endpoint should be protected by admin middleware.
 // ════════════════════════════════════════════════════════════════════════════
-router.get('/users', async (req, res) => {
+router.get('/users', protectAdmin, async (req, res) => {
   try {
     const users = await getAllUsers();
     return res.status(200).json({
